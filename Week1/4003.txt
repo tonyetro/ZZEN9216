@@ -1,0 +1,25 @@
+// 0:  Halt
+// 1:  R0++
+// 2:  R0--
+// 3:  R1++
+// 4:  R1--
+// 5:  R0 = R0 + R1
+// 6:  R0 = R0 - R1
+// 7:  Print R0
+// 8:  Jump to address <data> if R0 != 0
+// 9:  Jump to address <data> if R0 == 0
+// 10: Load value at address <data> into R0
+// 11: Load value at address <data> into R1
+
+// 10 15     // Load 15
+// 2 2       // if 2, will bring to 0
+// 8 9       // Jump to x if R0 != 0
+// 1 7 0     // Add 1, print, halt
+// 10 8 7 0  // Load 0, print, halt
+
+10 15 9 13
+
+10 15  2  2
+ 8  9  1  7
+ 0 10 12  7
+ 0  0  0  0
