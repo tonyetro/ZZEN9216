@@ -1,22 +1,35 @@
 /*
- * terminalColors.h
- * Functional logic for terminal colors in coloured terminal poem
- * Written by Tony Caelum on 30/08/2022
+ * 2.3 Terminal color function prototypes
+ *
+ * Written by Tony Caelum on 31/08/2023
  */
 
-#define ESC "\033"
-#define SET_FOREGROUND "[38;"
-#define RGB_TRIPLE_MODE "2;"
-#define ESC_TERMINATOR "m"
-
+#include <stdlib.h>
 #include <stdio.h>
+
 #include "terminalColors.h"
 
-// set the color to be used by the terminal in future printing
+// set the text color
 void setForegroundColor(int red, int green, int blue) {
     printf(ESC);
     printf(SET_FOREGROUND);
     printf(RGB_TRIPLE_MODE);
     printf("%d;%d;%d", red, green, blue);
+    printf(ESC_TERMINATOR);
+}
+
+// set the background color
+void setBackgroundColor(int red, int green, int blue) {
+    printf(ESC);
+    printf(SET_BACKGROUND);
+    printf(RGB_TRIPLE_MODE);
+    printf("%d;%d;%d", red, green, blue);
+    printf(ESC_TERMINATOR);
+}
+
+// reset to terminal defaults
+void resetTextColors(void) {    
+    printf(ESC);
+    printf(SET_NORMAL);
     printf(ESC_TERMINATOR);
 }

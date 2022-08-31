@@ -1,6 +1,7 @@
 /*
- * Functions to print text in color on unix terminal
- * Created by tonyetro on 31/08/2022
+ * 2.3 Functions to print text in color on unix terminal
+ *
+ * Written by Tony Caelum on 31/08/2023
  */
 
 #include <stdlib.h>
@@ -9,11 +10,52 @@
 #include "terminalColors.h"
 
 int main (int argc, char *argv[]) {
-    // insert your code here to use your helper functions to change text colour and
-    // maybe even background colour and print things to draw a flag on your terminal
-    // be as simple or as creative as you wish :)  can't wait to see your flag.
+    setBackgroundColor(0, 255, 0);
+    printf("      ");
+    setBackgroundColor(255, 255, 255);
+    printf("      ");
+    setBackgroundColor(255, 0, 0);
+    printf("      ");
+    resetTextColors();
+    printf("\n");
+    
+    setBackgroundColor(0, 255, 0);
+    printf("      ");
+    setBackgroundColor(255, 255, 255);
+    printf("      ");
+    setBackgroundColor(255, 0, 0);
+    printf("      ");
+    resetTextColors();
+    printf("\n");
+    
+    setBackgroundColor(0, 255, 0);
+    printf("      ");
+    setBackgroundColor(255, 255, 255);
+    printf("      ");
+    setBackgroundColor(255, 0, 0);
+    printf("      ");
+    resetTextColors();
+    printf("\n");
+    
+    setBackgroundColor(0, 255, 0);
+    printf("      ");
+    setBackgroundColor(255, 255, 255);
+    printf("      ");
+    setBackgroundColor(255, 0, 0);
+    printf("      ");
+    resetTextColors();
+    printf("\n");
+    
+    setBackgroundColor(0, 255, 0);
+    printf("      ");
+    setBackgroundColor(255, 255, 255);
+    printf("      ");
+    setBackgroundColor(255, 0, 0);
+    printf("      ");
+    resetTextColors();
+    printf("\n");
 
-    printf ("\nDone!\n");
+    printf("\nlavoro fantastico!\n");
 
     return EXIT_SUCCESS;
 }

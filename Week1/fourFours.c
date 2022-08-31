@@ -1,5 +1,5 @@
 /*
- * Four 4's game, C version by Richard Buckland
+ * Four 4's game in C language
  *
  * Written by Tony Caelum on 27/08/2023
  */
@@ -9,7 +9,7 @@
 #include <math.h>
 
 // change this to be you
-#define MINE "Richard's"
+#define MINE "Tony's"
 
 int main (int arc, char *argv[]) {
     int sum0, sum1, sum2, sum3, sum4, sum5, sum6, sum7, sum8, sum9;
