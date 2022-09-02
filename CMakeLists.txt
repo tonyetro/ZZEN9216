@@ -11,7 +11,7 @@ add_executable(ZZEN9216
 #		Week1/fourFours.c)
 #		Week1/large.c)
 #		Week1/inOrder.c)
-		Week1/numberToWords.c)
+#		Week1/numberToWords.c Week1/helloFace.c Week1/colourFace.c)
 #		Week1/leapYear.c)
 
 ####### WEEK 2
@@ -19,3 +19,7 @@ add_executable(ZZEN9216
 #		Week2/colorFun.c)
 #		Week2/main Week2/numbers.c Week2/numbers.h)
 #		Week2/terminalColors.h Week2/terminalColors.c Week2/printPoem.c Week2/testTerminalColors.c Week2/flags.c)
+#		Week2/aroundTheWorld.c)
+#		Week2/triangle.c)
+#		Week2/chessboard.c)
+		Week2/wondrous.c)

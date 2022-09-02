@@ -1,8 +1,9 @@
 /*
- * Four 4's game in C language
- *
- * Written by Tony Caelum on 27/08/2023
+ * Tony Caelum
+ * 30 August 22, ZZEN9216
+ * Four 4's game written in C language, solutions 0-29
  */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
@@ -12,9 +13,12 @@
 #define MINE "Tony's"
 
 int main (int arc, char *argv[]) {
-    int sum0, sum1, sum2, sum3, sum4, sum5, sum6, sum7, sum8, sum9;
-    int sum10, sum11, sum12, sum13, sum14, sum15, sum16, sum17, sum18, sum19;
-    int sum20, sum21, sum22, sum23, sum24, sum25, sum26, sum27, sum28, sum29;
+    int sum0, sum1, sum2, sum3, sum4;
+    int sum5, sum6, sum7, sum8, sum9;
+    int sum10, sum11, sum12, sum13, sum14;
+    int sum15, sum16, sum17, sum18, sum19;
+    int sum20, sum21, sum22, sum23, sum24;
+    int sum25, sum26, sum27, sum28, sum29;
 
     // solutions 0-9
     sum0 = (4 - 4) + (4 - 4);
@@ -51,10 +55,19 @@ int main (int arc, char *argv[]) {
     sum28 = 44 - 4 * 4;
     sum29 = 4 / .4 / .4 + 4;
 
-    printf("Welcome to %s version of the Four Fours problem. Here goes:\n", MINE);
+    printf(
+        "Welcome to %s version of the Four Fours problem."
+        "Here goes:\n", MINE
+    );
 
     // sum0 ~ sum9
-    printf("%d - %d - %d - %d - %d - %d - %d - %d - %d - %d\n", sum0, sum1, sum2, sum3, sum4, sum5, sum6, sum7, sum8, sum9);
+    printf(
+        "%d - %d - %d - %d - %d ",
+        sum0, sum1, sum2, sum3, sum4);
+    printf(
+        "%d - %d - %d - %d - %d\n",
+        sum5, sum6, sum7, sum8, sum9
+    );
 
     // test that the correct answers are being produced
     // test cases 0 ~ 9
@@ -71,7 +84,14 @@ int main (int arc, char *argv[]) {
     printf("All tests 0-9 passed! Well done. You are awesome!\n");
 
     // sum10 ~ sum19
-    printf("%d - %d - %d - %d - %d - %d - %d - %d - %d - %d\n", sum10, sum11, sum12, sum13, sum14, sum15, sum16, sum17, sum18, sum19);
+    printf(
+        "%d - %d - %d - %d - %d ",
+        sum10, sum11, sum12, sum13, sum14
+    );
+    printf(
+        "%d - %d - %d - %d - %d\n",
+        sum15, sum16, sum17, sum18, sum19
+    );
 
     // test cases 10 ~ 19
     assert(sum10 == 10);
@@ -84,10 +104,17 @@ int main (int arc, char *argv[]) {
     assert(sum17 == 17);
     assert(sum18 == 18);
     assert(sum19 == 19);
-    printf("All tests 10-19 passed! Well done. You are doubly awesome!!\n");
+    printf("All tests 10-19 passed! Well done. You are awesome!\n");
 
     // sum20 ~ sum29
-    printf("%d - %d - %d - %d - %d - %d - %d - %d - %d - %d\n", sum20, sum21, sum22, sum23, sum24, sum25, sum26, sum27, sum28, sum29);
+    printf(
+        "%d - %d - %d - %d - %d ",
+        sum20, sum21, sum22, sum23, sum24
+    );
+    printf(
+        "%d - %d - %d - %d - %d\n",
+        sum25, sum26, sum27, sum28, sum29
+    );
 
     // test cases 20 ~ 29
     assert(sum20 == 20);
@@ -100,7 +127,7 @@ int main (int arc, char *argv[]) {
     assert(sum27 == 27);
     assert(sum28 == 28);
     assert(sum29 == 29);
-    printf("All tests 20-29 passed! Well done. You are triply awesome!!!\n");
+    printf("All tests 20-29 passed! Well done. You are awesome!\n");
 
     return EXIT_SUCCESS;
 }

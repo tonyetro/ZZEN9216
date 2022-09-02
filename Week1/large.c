@@ -1,7 +1,7 @@
 /*
- * Read in two integers and print the larger.
- *
- * Written by Tony Caelum on 27/08/2022
+ * Tony Caleum
+ * 7 September 22, ZZEN9216
+ * Read in two integers and print the larger number
  */
 
 #include <stdio.h>
@@ -14,8 +14,13 @@ int main (int argc, char *argv[]) {
     printf("Enter two numbers: ");
     scanf("%d %d", &num1, &num2);
 
-    // YOUR CODE GOES here
-    printf("%d\n", num1 > num2 ? num1 : num2);
+    if (num1 > num2) {
+        printf("%d\n", num1);
+    } else if (num1 < num2) {
+        printf("%d\n", num2);
+    } else {
+        printf("%d\n", num1);
+    }
 
     return EXIT_SUCCESS;
 }
