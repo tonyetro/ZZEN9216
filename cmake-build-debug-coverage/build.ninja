@@ -39,7 +39,7 @@ include CMakeFiles\rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:\Users\tonyetro\My$ Drive\UNSW\ZZEN9126$ Foundations$ of$ Coding$ -$ C$ and$ Assembly\ZZEN9216\cmake-build-debug\
+cmake_ninja_workdir = C$:\Users\tonyetro\My$ Drive\UNSW\ZZEN9126$ Foundations$ of$ Coding$ -$ C$ and$ Assembly\ZZEN9216\cmake-build-debug-coverage\
 # =============================================================================
 # Object build statements for EXECUTABLE target ZZEN9216
 
@@ -50,7 +50,7 @@ cmake_ninja_workdir = C$:\Users\tonyetro\My$ Drive\UNSW\ZZEN9126$ Foundations$ o
 build cmake_object_order_depends_target_ZZEN9216: phony || CMakeFiles\ZZEN9216.dir
 
 build CMakeFiles\ZZEN9216.dir\Week2\arrays\dynamicArrays.c.obj: C_COMPILER__ZZEN9216_Debug C$:\Users\tonyetro\My$ Drive\UNSW\ZZEN9126$ Foundations$ of$ Coding$ -$ C$ and$ Assembly\ZZEN9216\Week2\arrays\dynamicArrays.c || cmake_object_order_depends_target_ZZEN9216
-  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd
+  FLAGS = --coverage /Zi /Ob0 /Od /RTC1 -MDd
   OBJECT_DIR = CMakeFiles\ZZEN9216.dir
   OBJECT_FILE_DIR = CMakeFiles\ZZEN9216.dir\Week2\arrays
   TARGET_COMPILE_PDB = CMakeFiles\ZZEN9216.dir\
@@ -65,7 +65,7 @@ build CMakeFiles\ZZEN9216.dir\Week2\arrays\dynamicArrays.c.obj: C_COMPILER__ZZEN
 # Link the executable ZZEN9216.exe
 
 build ZZEN9216.exe: C_EXECUTABLE_LINKER__ZZEN9216_Debug CMakeFiles\ZZEN9216.dir\Week2\arrays\dynamicArrays.c.obj
-  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd
+  FLAGS = --coverage /Zi /Ob0 /Od /RTC1 -MDd
   LINK_FLAGS = /machine:X86 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
   OBJECT_DIR = CMakeFiles\ZZEN9216.dir
@@ -81,7 +81,7 @@ build ZZEN9216.exe: C_EXECUTABLE_LINKER__ZZEN9216_Debug CMakeFiles\ZZEN9216.dir\
 # Utility command for edit_cache
 
 build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "C:\Users\tonyetro\My Drive\UNSW\ZZEN9126 Foundations of Coding - C and Assembly\ZZEN9216\cmake-build-debug" && C:\Users\tonyetro\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\bin\cmake.exe -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D "C:\Users\tonyetro\My Drive\UNSW\ZZEN9126 Foundations of Coding - C and Assembly\ZZEN9216\cmake-build-debug-coverage" && C:\Users\tonyetro\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\bin\cmake.exe -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -92,7 +92,7 @@ build edit_cache: phony CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "C:\Users\tonyetro\My Drive\UNSW\ZZEN9126 Foundations of Coding - C and Assembly\ZZEN9216\cmake-build-debug" && C:\Users\tonyetro\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\bin\cmake.exe --regenerate-during-build -S"C:\Users\tonyetro\My Drive\UNSW\ZZEN9126 Foundations of Coding - C and Assembly\ZZEN9216" -B"C:\Users\tonyetro\My Drive\UNSW\ZZEN9126 Foundations of Coding - C and Assembly\ZZEN9216\cmake-build-debug""
+  COMMAND = cmd.exe /C "cd /D "C:\Users\tonyetro\My Drive\UNSW\ZZEN9126 Foundations of Coding - C and Assembly\ZZEN9216\cmake-build-debug-coverage" && C:\Users\tonyetro\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\bin\cmake.exe --regenerate-during-build -S"C:\Users\tonyetro\My Drive\UNSW\ZZEN9126 Foundations of Coding - C and Assembly\ZZEN9216" -B"C:\Users\tonyetro\My Drive\UNSW\ZZEN9126 Foundations of Coding - C and Assembly\ZZEN9216\cmake-build-debug-coverage""
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -110,7 +110,7 @@ build ZZEN9216: phony ZZEN9216.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/tonyetro/My Drive/UNSW/ZZEN9126 Foundations of Coding - C and Assembly/ZZEN9216/cmake-build-debug
+# Folder: C:/Users/tonyetro/My Drive/UNSW/ZZEN9126 Foundations of Coding - C and Assembly/ZZEN9216/cmake-build-debug-coverage
 
 build all: phony ZZEN9216.exe
 
