@@ -18,7 +18,7 @@ int main (int argc, char *argv[]) {
     printf("      ");
     resetTextColors();
     printf("\n");
-    
+
     setBackgroundColor(0, 255, 0);
     printf("      ");
     setBackgroundColor(255, 255, 255);
@@ -27,7 +27,7 @@ int main (int argc, char *argv[]) {
     printf("      ");
     resetTextColors();
     printf("\n");
-    
+
     setBackgroundColor(0, 255, 0);
     printf("      ");
     setBackgroundColor(255, 255, 255);
@@ -36,7 +36,7 @@ int main (int argc, char *argv[]) {
     printf("      ");
     resetTextColors();
     printf("\n");
-    
+
     setBackgroundColor(0, 255, 0);
     printf("      ");
     setBackgroundColor(255, 255, 255);
@@ -45,7 +45,7 @@ int main (int argc, char *argv[]) {
     printf("      ");
     resetTextColors();
     printf("\n");
-    
+
     setBackgroundColor(0, 255, 0);
     printf("      ");
     setBackgroundColor(255, 255, 255);

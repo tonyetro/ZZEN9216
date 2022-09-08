@@ -11,7 +11,9 @@ add_executable(ZZEN9216
 #		Week1/fourFours.c)
 #		Week1/large.c)
 #		Week1/inOrder.c)
-#		Week1/numberToWords.c Week1/helloFace.c Week1/colourFace.c)
+#		Week1/numberToWords.c)
+#		Week1/helloFace.c)
+#		Week1/colourFace.c)
 #		Week1/leapYear.c)
 
 ####### WEEK 2
@@ -26,4 +28,8 @@ add_executable(ZZEN9216
 #		Week2/arrays/startingArrays.c)
 #		Week2/arrays/arrayExamScores.c)
 #		Week2/arrays/memoryAddresses.c)
-		Week2/arrays/dynamicArrays.c)
+#		Week2/arrays/dynamicArrays.c)
+
+####### WEEK 3
+#		Week3/area.c)
+		Week3/bitmaps/bmpCreate.c Week3/bitmaps/bmpShapeDrawing.c Week3/bitmaps/bmpShapeDrawing.h)

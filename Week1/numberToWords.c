@@ -6,18 +6,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[]) {
-    int number, ones, tens, hundreds;
+int main() {
+    int number, lastDigit, tens, hundreds;
     printf("Enter an integer between 0 and 99: ");
     scanf("%d", &number);
+    lastDigit = number % 10;
 
     // If number is 0
     if (number == 0) {
         printf("zero\n");
-    // If number is out of range
+        // If number is out of range
     } else if (number < 0 || number > 999) {
-        printf("Number is not between 0..999\n");
-    // If number is outside of 'teens', continue
+        printf("Number is not between 0..99\n");
+        // If number is outside 'teens', continue
     } else {
         // Triple digit builder
         hundreds = number / 100;
@@ -42,112 +43,86 @@ int main(int argc, char *argv[]) {
                 printf("nine hundred");
             }
 
-            // Incase hundreth is not followed by 0's
-            if ((number % 100) / 10 != 0 && hundreds != 0) {
+            // Incase hundreds is not followed by 0's
+            if ((number % 100) == 0 && (number % 10) == 0) {
+                printf("\n");
+            } else {
                 printf(" and ");
             }
-
-            // Convert number to double digit
-            number %= 100;
         }
 
         // Double digit builder
-        tens = 10;
-        if (tens >= 20) {
-            if (tens < 30) {
-                if (number > 19 && number < 30) {
-                    printf("twenty\n");
-                } else {
-                    printf("twenty ");
-                }
-            } else if (number > 29 && number < 40) {
-                if (tens == 20) {
-                    printf("thirty\n");
-                } else {
-                    printf("thirty ");
-                }
-            } else if (number > 39 && number < 50) {
-                if (number == 40) {
-                    printf("forty\n");
-                } else {
-                    printf("forty ");
-                }
-            } else if (number > 49 && number < 60) {
-                if (number == 50) {
-                    printf("fifty\n");
-                } else {
-                    printf("fifty ");
-                }
-            } else if (number > 59 && number < 70) {
-                if (number == 60) {
-                    printf("sixty\n");
-                } else {
-                    printf("sixty ");
-                }
-            } else if (number > 69 && number < 80) {
-                if (number == 70) {
-                    printf("seventy\n");
-                } else {
-                    printf("seventy ");
-                }
-            } else if (number > 79 && number < 90) {
-                if (number == 80) {
-                    printf("eighty\n");
-                } else {
-                    printf("eighty ");
-                }
-            } else if (number > 89 && number < 100) {
-                if (number == 90) {
-                    printf("ninety\n");
-                } else {
-                    printf("ninety ");
-                }
+        tens = (number % 100) / 10;
+        // Every double digit range except the teens
+        if (tens > 1) {
+            if (tens == 2) {
+                printf("twenty");
+            } else if (tens == 3) {
+                printf("thirty");
+            } else if (tens == 4) {
+                printf("forty");
+            } else if (tens == 5) {
+                printf("fifty");
+            } else if (tens == 6) {
+                printf("sixty");
+            } else if (tens == 7) {
+                printf("seventy");
+            } else if (tens == 8) {
+                printf("eighty");
+            } else if (tens == 9) {
+                printf("ninety");
+            }
+
+            if ((number % 100 != 0) && (number % 10 != 0) &&
+                lastDigit != 0) {
+                printf(" ");
+            } else {
+                printf("\n");
             }
         }
 
         // Finding numbers to print in the teens
-        if (tens == 1 || (hundreds / 10) == 1) {
-            if (number == 10) {
+        if (tens == 1) {
+            if (lastDigit == 0) {
                 printf("ten\n");
-            } else if (number == 11) {
+            } else if (lastDigit == 1) {
                 printf("eleven\n");
-            } else if (number == 12) {
+            } else if (lastDigit == 2) {
                 printf("twelve\n");
-            } else if (number == 13) {
+            } else if (lastDigit == 3) {
                 printf("thirteen\n");
-            } else if (number == 14) {
+            } else if (lastDigit == 4) {
                 printf("fourteen\n");
-            } else if (number == 15) {
+            } else if (lastDigit == 5) {
                 printf("fifteen\n");
-            } else if (number == 16) {
+            } else if (lastDigit == 6) {
                 printf("sixteen\n");
-            } else if (number == 17) {
+            } else if (lastDigit == 7) {
                 printf("seventeen\n");
-            } else if (number == 18) {
+            } else if (lastDigit == 8) {
                 printf("eighteen\n");
-            } else if (number == 19) {
+            } else if (lastDigit == 9) {
                 printf("nineteen\n");
             }
         } else {
-            // Single digit printer
-            ones = number % 10;
-            if (ones == 1) {
+            // Singular number cherry picking
+            if (lastDigit == 1) {
                 printf("one\n");
-            } else if (ones == 2) {
+            } else if (lastDigit == 2) {
                 printf("two\n");
-            } else if (ones == 3) {
+            } else if (lastDigit == 3) {
                 printf("three\n");
-            } else if (ones == 4) {
+            } else if (lastDigit == 4) {
                 printf("four\n");
-            } else if (ones == 5) {
+            } else if (lastDigit == 5) {
                 printf("five\n");
-            } else if (ones == 6) {
+            } else if (lastDigit == 6) {
                 printf("six\n");
-            } else if (ones == 7) {
+            } else if (lastDigit == 7) {
                 printf("seven\n");
-            } else if (ones == 8) {
+            } else if (lastDigit == 8) {
                 printf("eight\n");
-            } else if (ones == 9) {
+            } else if (lastDigit == 9) {
                 printf("nine\n");
             }
         }

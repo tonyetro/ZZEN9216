@@ -1,6 +1,9 @@
-// A program to help understand how to work with dynamic arrays in C
-// Goal: Change the integer array so that the "hidden text" prints correctly.
-// <the date here> <your name here>
+/*
+ * Tony Caelum
+ * 4 September 22, ZZEN9216
+ * A program to help understand how to work with dynamic arrays in C
+ * Goal: Change the integer array so the "hidden text" prints correctly
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
