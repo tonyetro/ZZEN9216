@@ -55,7 +55,10 @@ int main(int argc, char *argv[]) {
     FILE *bmpFile = fopen("myBitmap.bmp", "wb");
     fwrite(bmpHeader, 1, 54, bmpFile);
     fwrite(pixelData, 1, sizeof(pixelData), bmpFile);
-    char secretMessage[] = "[we don't talk about bruno]";
+    // char secretMessage[] = "[
+    //     How many programmers does it take to change a light bulb?
+    //     None - it's a hardware problem.
+    // ]";
     fclose(bmpFile);
 
     return EXIT_SUCCESS;
@@ -66,17 +69,16 @@ void setPixelRGB(unsigned char *pixelData, int x, int y, unsigned char r, unsign
     // TODO:
     // 1. Reverse y to start at top of bitmap image
     //    Hint: you can use the IMG_HEIGHT constant
-    y = (?) - 1;
+    y = IMG_HEIGHT - y - 1;
 
     // 2. calculate the pixel index on bitmap image and store in 'p'
     //    Hint: you can use the ROW_STRIDE and PIXEL_SIZE constants
-
-    int p = y * (?) + x * (?);
+    int p = y * ROW_STRIDE + x * PIXEL_SIZE;
 
     // 3. Assign the r (Red), g (Green), and b (Blue) parameters to the pixelData elements below
-    pixelData[p + 0] = ? ;
-    pixelData[p + 1] = ? ;
-    pixelData[p + 2] = ? ;
+    pixelData[p + 0] = b;
+    pixelData[p + 1] = g;
+    pixelData[p + 2] = r;
 }
 
 // Sets the colour of pixel at (x, y) on bitmap
@@ -107,13 +109,43 @@ void setPixelColour(unsigned char *pixelData, int colour, int x, int y) {
 
 // function to test creating a bitmap - image should match Activity notes
 void testBitmap(unsigned char *pixelData) {
-    drawRectangleFilled(pixelData, RED, 0, 0, 170, 170);
-    drawRectangleFilled(pixelData, ORANGE, 170, 0, 172, 170);
-    drawRectangleFilled(pixelData, YELLOW, 342, 0, 170, 170);
-    drawRectangleFilled(pixelData, GREEN, 342, 170, 170, 172);
-    drawRectangleFilled(pixelData, BLUE, 342, 342, 170, 170);
-    drawRectangleFilled(pixelData, PURPLE, 170, 342, 172, 170);
-    drawRectangleFilled(pixelData, PINK, 0, 342, 170, 170);
-    drawRectangleFilled(pixelData, GREY, 0, 170, 170, 172);
-    drawRectangleFilled(pixelData, BLACK, 170, 170, 172, 172);
+    // DEFAULT
+    // drawRectangleFilled(pixelData, RED, 0, 0, 170, 170);
+    // drawRectangleFilled(pixelData, ORANGE, 170, 0, 172, 170);
+    // drawRectangleFilled(pixelData, YELLOW, 342, 0, 170, 170);
+    // drawRectangleFilled(pixelData, GREEN, 342, 170, 170, 172);
+    // drawRectangleFilled(pixelData, BLUE, 342, 342, 170, 170);
+    // drawRectangleFilled(pixelData, PURPLE, 170, 342, 172, 170);
+    // drawRectangleFilled(pixelData, PINK, 0, 342, 170, 170);
+    // drawRectangleFilled(pixelData, GREY, 0, 170, 170, 172);
+    // drawRectangleFilled(pixelData, BLACK, 170, 170, 172, 172);
+
+    drawBackground(pixelData, BLACK);
+
+    // GRID
+    int gridRow = 0, gridCol = 0;
+    while (gridCol < 512) {
+        while (gridRow < 512) {
+            drawRectangleOutline(pixelData, WHITE, gridRow, gridCol, 64, 64);
+            gridRow = gridRow + 64;
+        }
+        gridRow = 0;
+        gridCol = gridCol + 64;
+    }
+
+    // INNER CIRCLES
+    drawCircleOutline(pixelData, BLACK, 256, 256, 231);
+    drawCircleFilled(pixelData, RED, 256, 256, 230);
+    drawCircleOutline(pixelData, BLACK, 256, 256, 201);
+    drawCircleFilled(pixelData, YELLOW, 256, 256, 200);
+    drawCircleOutline(pixelData, BLACK, 256, 256, 171);
+    drawCircleFilled(pixelData, PINK, 256, 256, 170);
+    drawCircleOutline(pixelData, BLACK, 256, 256, 141);
+    drawCircleFilled(pixelData, GREEN, 256, 256, 140);
+    drawCircleOutline(pixelData, BLACK, 256, 256, 111);
+    drawCircleFilled(pixelData, PURPLE, 256, 256, 110);
+    drawCircleOutline(pixelData, BLACK, 256, 256, 71);
+    drawCircleFilled(pixelData, ORANGE, 256, 256, 70);
+    drawCircleOutline(pixelData, BLACK, 256, 256, 41);
+    drawCircleFilled(pixelData, BLUE, 256, 256, 40);
 }

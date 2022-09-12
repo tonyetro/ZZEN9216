@@ -1,0 +1,67 @@
+Create a new folder named bitmaps.
+Download the supplied files (bmpCreate.c, bmpShapeDrawing.c and bmpShapeDrawing.h) into the folder you have just created.
+
+Open the bmpCreate.c file, add the date and your name to the header comment, and look through the existing code.
+For reference:
+The constants (using #define) are used with setPixelColour to allow you to define the RGB values of particular colours. You can see how setPixelColour can use these constants to make the code more readable.
+The setPixelRGB function (which you will complete) stores the RGB values for the pixel at (x, y) in the pixelData array.
+And the testBitmap function will be used to validate your code in setPixelRGB.
+
+First half of the activity:
+Complete the code in the setPixelRGB function.
+To do this, use the // TODO: steps shown in the code comments to replace each question mark ?.
+
+Compile and run your program.
+
+(If needed) Change the directory in the terminal using: cd C/BmpImagesInC
+
+To compile, use: gcc -Wall -Werror -o createBitmap bmpCreate.c bmpShapeDrawing.c
+To run, use: ./createBitmap
+Open the 'myBitmap.bmp' image file to check that your bitmap looks like this:
+
+
+Open your bitmap image in hexed.it to inspect the hex bytes of each element.
+Some questions to consider:
+
+After the header bytes, which colour is first in the array?
+
+Which colour is second in the array?
+
+Third?
+
+Last?
+
+(Note: you can compare the hex bytes to the comments in setPixelColour)
+
+Can you see that the order of the pixels matches the order described in the 3.2.0 slide?
+
+Second half of the activity:
+
+Now for the fun part! Create your own picture using the shape drawing functions in bmpShapeDrawing.c. eg. Your favourite emoji, or your favourite animal, or an image of something you are really interested in. It can be anything! Be creative! 🧑‍🎨 💻
+(See below for more information about these functions.)
+Note: You do not and will not need to understand the code in bmpShapeDrawing.c, though you are of course welcome to look through it.
+
+Add a secret message (string that does not change the bitmap image) to the end of your bitmap data to view in hexed.it (Scroll to the end of the bytes to see it).
+
+Got a good cybersecurity or programming joke? Got some more security advice? Know a great life hack?
+
+Put it in your secret message in your image file!
+
+Share your wonderful creation in the Discussion Thread for this activity!
+Check out the cool images and secret messages of your peers!
+
+In your Logbook document, under the heading for this activity:
+Write a summary comment about what you learnt through doing this activity.
+Add a screenshot showing your Discussion Thread post with the image you created, and
+Include a screenshot showing the secret message in hexed.it.
+
+
+Shape Drawing functions
+drawBackground:			Clears the whole bitmap to a particular colour.
+drawRectangleFilled:	Draws a filled in Rectangle on the bitmap.
+drawRectangleOutline:	Draws a Rectangle outline on the bitmap.
+drawCircleFilled:		Draws a filled in Circle on the bitmap.
+drawCircleOutline:		Draws a Circle outline on the bitmap.
+drawTriangleFilled:		Draws a filled in Triangle on the bitmap.
+drawTriangleOutline:	Draws a Triangle outline on the bitmap.
+drawLine:				Draws a line between 2 points - (x1, y1) and (x2, y2)
