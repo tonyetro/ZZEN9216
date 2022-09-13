@@ -1,7 +1,8 @@
 /**
- * bmpShapeDrawing.c
- * Driver code to create and draw into a BMP file
- * Written by Tony Caelum on 12/09/22
+ * bmpShapeDrawing.h
+ * Header file for bmpShapeDrawing.c
+ * Includes bitmap information (constants) and some pre-defined shape drawing functions
+ * Written by Olivia McKeon on 01/08/22
  */
 
 #ifndef BMP_SHAPE_DRAWING_H

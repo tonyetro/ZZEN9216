@@ -1,5 +1,8 @@
-// A program to create a bitmap image (.bmp file)
-// <the date here> <your name here>
+/**
+ * Creating and writing to a new BMP file, adding a programmer joke
+ * only viewable in a hexadecimal editor.
+ * Written by Tony Caelum on 05/09/22
+ */
 
 #include <stdio.h>
 #include <string.h>
@@ -55,17 +58,19 @@ int main(int argc, char *argv[]) {
     FILE *bmpFile = fopen("myBitmap.bmp", "wb");
     fwrite(bmpHeader, 1, 54, bmpFile);
     fwrite(pixelData, 1, sizeof(pixelData), bmpFile);
-    // char secretMessage[] = "[
-    //     How many programmers does it take to change a light bulb?
-    //     None - it's a hardware problem.
-    // ]";
+    char secretMessage[] = "["
+        "How many programmers does it take to change a light bulb?"
+        "None - it's a hardware problem."
+    "]";
+    fwrite(secretMessage, 1, sizeof(secretMessage), bmpFile);
     fclose(bmpFile);
 
     return EXIT_SUCCESS;
 }
 
 // Sets the RGB (red, green, blue) values of pixel at (x, y) on bitmap
-void setPixelRGB(unsigned char *pixelData, int x, int y, unsigned char r, unsigned char g, unsigned char b) {
+void setPixelRGB(unsigned char *pixelData,
+    int x, int y, unsigned char r, unsigned char g, unsigned char b) {
     // TODO:
     // 1. Reverse y to start at top of bitmap image
     //    Hint: you can use the IMG_HEIGHT constant
@@ -109,31 +114,31 @@ void setPixelColour(unsigned char *pixelData, int colour, int x, int y) {
 
 // function to test creating a bitmap - image should match Activity notes
 void testBitmap(unsigned char *pixelData) {
-    // DEFAULT
-    // drawRectangleFilled(pixelData, RED, 0, 0, 170, 170);
-    // drawRectangleFilled(pixelData, ORANGE, 170, 0, 172, 170);
-    // drawRectangleFilled(pixelData, YELLOW, 342, 0, 170, 170);
-    // drawRectangleFilled(pixelData, GREEN, 342, 170, 170, 172);
-    // drawRectangleFilled(pixelData, BLUE, 342, 342, 170, 170);
-    // drawRectangleFilled(pixelData, PURPLE, 170, 342, 172, 170);
-    // drawRectangleFilled(pixelData, PINK, 0, 342, 170, 170);
-    // drawRectangleFilled(pixelData, GREY, 0, 170, 170, 172);
-    // drawRectangleFilled(pixelData, BLACK, 170, 170, 172, 172);
-
+    // Standard black background, just for preference
     drawBackground(pixelData, BLACK);
 
-    // GRID
+    /**
+     * Create a background grid with a 2D array, overlaying background
+     * Image size is set to 512x512, so havbe chosed 64x64 squares
+     * with a grey-ish background rather than white for less contrast
+     */
     int gridRow = 0, gridCol = 0;
     while (gridCol < 512) {
         while (gridRow < 512) {
-            drawRectangleOutline(pixelData, WHITE, gridRow, gridCol, 64, 64);
+            drawRectangleOutline(
+                pixelData, GREY, gridRow, gridCol, 64, 64
+            );
             gridRow = gridRow + 64;
         }
         gridRow = 0;
         gridCol = gridCol + 64;
     }
 
-    // INNER CIRCLES
+    /**
+     * Draw circles within each other, with
+     * black outline for practicing using templated functions
+     * Note: In the pattern of "Sing a Rainbow" by Arthur Hamilton
+     */
     drawCircleOutline(pixelData, BLACK, 256, 256, 231);
     drawCircleFilled(pixelData, RED, 256, 256, 230);
     drawCircleOutline(pixelData, BLACK, 256, 256, 201);
@@ -148,4 +153,20 @@ void testBitmap(unsigned char *pixelData) {
     drawCircleFilled(pixelData, ORANGE, 256, 256, 70);
     drawCircleOutline(pixelData, BLACK, 256, 256, 41);
     drawCircleFilled(pixelData, BLUE, 256, 256, 40);
+
+    /**
+     * Draw random triangle to overlap the centre color
+     * Then another outline, to practice drawing with an offset shape
+     */
+    drawTriangleFilled(pixelData, YELLOW,
+        gridCol / 2, 202,
+        gridCol / 2 - 45, 280,
+        gridCol / 2 + 45, 280
+    );
+
+    drawTriangleOutline(pixelData, BLACK,
+        gridCol / 2 + 5, 205,
+        gridCol / 2 - 50, 275,
+        gridCol / 2 + 45, 285
+    );
 }
