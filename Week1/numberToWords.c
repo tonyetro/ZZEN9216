@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
+int main(void) {
     int number, lastDigit, tens, hundreds;
     printf("Enter an integer between 0 and 99: ");
     scanf("%d", &number);

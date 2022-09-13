@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-int main() {
+int main(void) {
     printf(
         "  _         _    \n"
         " /^\\       /^\\ \n"

@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-int main() {
+int main(void) {
     printf(
         "  \033[35m_         _    \n"
         " \033[37m/\033[34m^\033[37m\\       /\033[34m^\033[37m\\ \n"
