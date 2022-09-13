@@ -18,7 +18,7 @@ void printArrayAsChars(int* array, int size);
 void printHiddenWords(int* array, int size);
 void startingArrayValues(int* array);
 
-int main() {
+int main(void) {
     int* array;
     array = malloc(sizeof(*array) * ARRAY_SIZE);
     startingArrayValues(array);
