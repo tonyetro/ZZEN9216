@@ -30,7 +30,7 @@ void printArrayDetails(int* array, int size) {
     index = 0;
     while (index < size) {
         printf("%d\t\t%d\t\t%p\n", index, array[index], &array[index]);
-        index++;
+        index = index + 1;
     }
     printf("\n");
 }

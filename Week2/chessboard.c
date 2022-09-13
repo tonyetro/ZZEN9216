@@ -21,14 +21,14 @@ int main(int argc, char** argv) {
             column = 0;
             while (column < size) {
                 alternatingSymbols(counter);
-                counter++;
-                column++;
+                counter = counter + 1;
+                column = column + 1;
             }
             printf("\n");
             if (size % 2 == 0) {
-                counter++;
+                counter = counter + 1;
             }
-            row++;
+            row = row + 1;
         }
     }
 

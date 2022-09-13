@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
     while (index < ARRAY_SIZE) {
         printf("Enter array value at index %d: ", index);
         scanf("%d", &intArray[index]);
-        index++;
+        index = index + 1;
     }
     printf("\n");
 
@@ -33,7 +33,7 @@ int main(int argc, char** argv) {
     index = 0;
     while (index < ARRAY_SIZE) {
         printf("%c", intArray[index]);
-        index++;
+        index = index + 1;
     }
     printf("\n");
 
@@ -47,6 +47,6 @@ void printArray(int array[], int arraySize) {
 
     while (counter < arraySize) {
         printf("Index: %d\tValue: %d\n", counter, array[counter]);
-        counter++;
+        counter = counter + 1;
     }
 }

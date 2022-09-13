@@ -41,7 +41,7 @@ void absolute(int* array, int size) {
         if (array[index] < 0) {
             array[index] = array[index] * -1;
         }
-        index++;
+        index = index + 1;
     }
 }
 
@@ -75,7 +75,7 @@ void fixHiddenWords(int* array, int size) {
         } else if (array[index] == 116 && array[index - 1] == 114) {
             insert(array, size, 105, index);
         }
-        index++;
+        index = index + 1;
     }
 }
 
@@ -86,7 +86,7 @@ void printArrayAsInts(int* array, int size) {
     index = 0;
     while (index < size) {
         printf("%d\t%d\n", index, array[index]);
-        index++;
+        index = index + 1;
     }
 }
 
@@ -97,7 +97,7 @@ void printArrayAsChars(int* array, int size) {
     index = 0;
     while (index < size) {
         printf("%d\t%c\n", index, array[index]);
-        index++;
+        index = index + 1;
     }
 }
 
@@ -108,7 +108,7 @@ void printHiddenWords(int* array, int size) {
     index = 0;
     while (index < size) {
         printf("%c", array[index]);
-        index++;
+        index = index + 1;
     }
     printf("\n");
 }

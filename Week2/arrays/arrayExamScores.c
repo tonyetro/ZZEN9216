@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
     while (index < ARRAY_SIZE) {
         intArray[index] = (rand() % 101);
         fprintf(scoresFile, "%d\n", intArray[index]);
-        index++;
+        index = index + 1;
     }
     fclose(scoresFile);
 
@@ -87,7 +87,7 @@ void printExamScoreStats(int array[], int arraySize) {
         } else {
             printf("%d, ", array[index]);
         }
-        index++;
+        index = index + 1;
     }
 
     printf("\n\n");
@@ -127,7 +127,7 @@ int min(int array[], int arraySize) {
         if (array[index] < minValue) {
             minValue = array[index];
         }
-        index++;
+        index = index + 1;
     }
 
     return minValue;
@@ -142,7 +142,7 @@ int max(int array[], int arraySize) {
         if (array[index] > maxValue) {
             maxValue = array[index];
         }
-        index++;
+        index = index + 1;
     }
 
     return maxValue;
@@ -156,7 +156,7 @@ float average(int array[], int arraySize) {
     // Step 6: WRITE YOUR CODE HERE
     while (index < arraySize) {
         sumTotal = sumTotal + array[index];
-        index++;
+        index = index + 1;
     }
 
     // to avoid "integer division" calculating 'avg'
@@ -170,9 +170,9 @@ int numHDScores(int array[], int arraySize) {
     int index = 0;
     while (index < arraySize) {
         if (array[index] >= 85) {
-            scoreCountHD++;
+            scoreCountHD = scoreCountHD + 1;
         }
-        index++;
+        index = index + 1;
     }
     return scoreCountHD;
 }
@@ -183,9 +183,9 @@ int numDNScores(int array[], int arraySize) {
     int index = 0;
     while (index < arraySize) {
         if (array[index] >= 75 && array[index] <= 84) {
-            scoreCountDN++;
+            scoreCountDN = scoreCountDN + 1;
         }
-        index++;
+        index = index + 1;
     }
     return scoreCountDN;
 }
@@ -196,9 +196,9 @@ int numCRScores(int array[], int arraySize) {
     int index = 0;
     while (index < arraySize) {
         if (array[index] >= 65 && array[index] <= 74) {
-            scoreCountCR++;
+            scoreCountCR = scoreCountCR + 1;
         }
-        index++;
+        index = index + 1;
     }
 
     return scoreCountCR;
@@ -210,9 +210,9 @@ int numPScores(int array[], int arraySize) {
     int index = 0;
     while (index < arraySize) {
         if (array[index] >= 50 && array[index] <= 64) {
-            scoreCountP++;
+            scoreCountP = scoreCountP + 1;
         }
-        index++;
+        index = index + 1;
     }
 
     return scoreCountP;
@@ -224,9 +224,9 @@ int numFScores(int array[], int arraySize) {
     int index = 0;
     while (index < arraySize) {
         if (array[index] >= 0 && array[index] <= 49) {
-            scoreCountF++;
+            scoreCountF = scoreCountF + 1;
         }
-        index++;
+        index = index + 1;
     }
 
     return scoreCountF;

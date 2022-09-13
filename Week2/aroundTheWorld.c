@@ -22,6 +22,7 @@ int main (int argc, char *argv[]) {
 
 void aroundTheWorld(int numLines) {
     for (int counter = 1; counter < numLines; counter++) {
+        counter = counter + 1;
         if (numLines == 1) {
             printf("Around the world.\n");
         } else if (counter == 1 && numLines > 1) {

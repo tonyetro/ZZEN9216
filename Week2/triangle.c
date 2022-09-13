@@ -35,7 +35,7 @@ int printTriangle(int rows) {
             } else if (counter == rows) {
                 return currNumber;
             }
-            counter++;
+            counter = counter + 1;
         }
     }
 

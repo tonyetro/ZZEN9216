@@ -33,7 +33,7 @@ int printWondrous(int startingNum) {
         return startingNum;
     } else if (startingNum > 1) {
         printf("%d ", startingNum);
-        count++;
+        count = count + 1;
 
         while (startingNum > 1) {
             if (startingNum % 2 == 0) {
@@ -41,16 +41,16 @@ int printWondrous(int startingNum) {
 
                 if (startingNum == 1) {
                     printf("%d\n", startingNum);
-                    count++;
+                    count = count + 1;
                 } else {
                     printf("%d ", startingNum);
-                    count++;
+                    count = count + 1;
                 }
 
             } else if (startingNum % 2 != 0) {
                 startingNum = startingNum * 3 + 1;
                 printf("%d ", startingNum);
-                count++;
+                count = count + 1;
             }
         }
     }
