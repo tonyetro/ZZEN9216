@@ -38,7 +38,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd"
+					"fragment" : "--coverage /Zi /Ob0 /Od /RTC1 -MDd"
 				}
 			],
 			"language" : "C",
@@ -52,10 +52,7 @@
 			},
 			"sourceIndexes" : 
 			[
-				2,
-				3,
-				4,
-				5
+				0
 			]
 		}
 	],
@@ -65,7 +62,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd",
+				"fragment" : "--coverage /Zi /Ob0 /Od /RTC1 -MDd",
 				"role" : "flags"
 			},
 			{
@@ -89,21 +86,10 @@
 	"sourceGroups" : 
 	[
 		{
-			"name" : "Header Files",
-			"sourceIndexes" : 
-			[
-				0,
-				1
-			]
-		},
-		{
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				2,
-				3,
-				4,
-				5
+				0
 			]
 		}
 	],
@@ -111,37 +97,9 @@
 	[
 		{
 			"backtrace" : 1,
-			"path" : "Assessment2/pixelColor.h",
+			"compileGroupIndex" : 0,
+			"path" : "Week3/mandelbrotFunctions.c",
 			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "Assessment2/mandelbrot.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "Assessment2/pixelColor.c",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "Assessment2/mandelbrot.c",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "Assessment2/bmpServer.c",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "Assessment2/asterisk.c",
-			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"

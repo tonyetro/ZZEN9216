@@ -7,9 +7,9 @@ add_executable(ZZEN9216
 #		main.c)
 
 ####### ASSESSMENT 2
-		Assessment2/pixelColor.h Assessment2/mandelbrot.h
-		Assessment2/pixelColor.c Assessment2/mandelbrot.c
-		Assessment2/bmpServer.c Assessment2/asterisk.c)
+#		Assessment2/pixelColor.h Assessment2/mandelbrot.h
+#		Assessment2/pixelColor.c Assessment2/mandelbrot.c
+#		Assessment2/bmpServer.c Assessment2/asterisk.c)
 
 ####### WEEK 1
 #		Week1/helloFace.c)
@@ -39,7 +39,7 @@ add_executable(ZZEN9216
 #		Week3/area.c)
 #		Week3/bitmaps/bmpCreate.c Week3/bitmaps/bmpShapeDrawing.c Week3/bitmaps/bmpShapeDrawing.h)
 #		Week3/complexNumber.c)
-#		Week3/mandelbrotFunctions.c Assessment2/asterisk.c Assessment2/bmpServer.c Assessment2/mandelbrot.c Assessment2/mandelbrot.h Assessment2/pixelColor.c Assessment2/pixelColor.h)
+		Week3/mandelbrotFunctions.c)
 
 ####### WEEK 4
 #		Week4/sanitisingInputString.c)

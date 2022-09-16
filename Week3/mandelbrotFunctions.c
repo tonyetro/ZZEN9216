@@ -47,7 +47,7 @@ int escapeSteps(double x, double y) {
     complexNum.imaginaryComp = y;
 
     while (counter < MAX_ITERATIONS) {
-        if (magnitude <= 2) {
+        if (magnitude < 2) {
             originPoint = mandelbrotSquare(originPoint);
             originPoint = mandelbrotAdd(originPoint, complexNum);
             magnitude = mandelbrotMagnitude(originPoint);
@@ -58,22 +58,22 @@ int escapeSteps(double x, double y) {
         counter = counter + 1;
     }
 
-    return magnitude;
+    return counter;
 }
 
 struct complexNumber mandelbrotAdd(struct complexNumber c1,
                                    struct complexNumber c2) {
-    ComplexNumber cplxNumAdd;
-    cplxNumAdd.realComp = c1.realComp + c2.realComp;
-    cplxNumAdd.imaginaryComp = c1.imaginaryComp + c2.imaginaryComp;
-    return cplxNumAdd;
+    ComplexNumber cplxNum;
+    cplxNum.realComp = c1.realComp + c2.realComp;
+    cplxNum.imaginaryComp = c1.imaginaryComp + c2.imaginaryComp;
+    return cplxNum;
 }
 
 struct complexNumber mandelbrotSquare(struct complexNumber c) {
-    ComplexNumber cplxNumSquare;
-    cplxNumSquare.realComp = pow(c.realComp, 2) - pow(c.imaginaryComp, 2);
-    cplxNumSquare.imaginaryComp = 2 * c.realComp * c.imaginaryComp;
-    return cplxNumSquare;
+    ComplexNumber cplxNum;
+    cplxNum.realComp = pow(c.realComp, 2) - pow(c.imaginaryComp, 2);
+    cplxNum.imaginaryComp = 2 * c.realComp * c.imaginaryComp;
+    return cplxNum;
 }
 
 double mandelbrotMagnitude(struct complexNumber c) {

@@ -49,31 +49,10 @@ cmake_ninja_workdir = C$:\Users\tonyetro\My$ Drive\UNSW\ZZEN9126$ Foundations$ o
 
 build cmake_object_order_depends_target_ZZEN9216: phony || CMakeFiles\ZZEN9216.dir
 
-build CMakeFiles\ZZEN9216.dir\Assessment2\pixelColor.c.obj: C_COMPILER__ZZEN9216_Debug C$:\Users\tonyetro\My$ Drive\UNSW\ZZEN9126$ Foundations$ of$ Coding$ -$ C$ and$ Assembly\ZZEN9216\Assessment2\pixelColor.c || cmake_object_order_depends_target_ZZEN9216
+build CMakeFiles\ZZEN9216.dir\Week3\mandelbrotFunctions.c.obj: C_COMPILER__ZZEN9216_Debug C$:\Users\tonyetro\My$ Drive\UNSW\ZZEN9126$ Foundations$ of$ Coding$ -$ C$ and$ Assembly\ZZEN9216\Week3\mandelbrotFunctions.c || cmake_object_order_depends_target_ZZEN9216
   FLAGS = --coverage /Zi /Ob0 /Od /RTC1 -MDd
   OBJECT_DIR = CMakeFiles\ZZEN9216.dir
-  OBJECT_FILE_DIR = CMakeFiles\ZZEN9216.dir\Assessment2
-  TARGET_COMPILE_PDB = CMakeFiles\ZZEN9216.dir\
-  TARGET_PDB = ZZEN9216.pdb
-
-build CMakeFiles\ZZEN9216.dir\Assessment2\mandelbrot.c.obj: C_COMPILER__ZZEN9216_Debug C$:\Users\tonyetro\My$ Drive\UNSW\ZZEN9126$ Foundations$ of$ Coding$ -$ C$ and$ Assembly\ZZEN9216\Assessment2\mandelbrot.c || cmake_object_order_depends_target_ZZEN9216
-  FLAGS = --coverage /Zi /Ob0 /Od /RTC1 -MDd
-  OBJECT_DIR = CMakeFiles\ZZEN9216.dir
-  OBJECT_FILE_DIR = CMakeFiles\ZZEN9216.dir\Assessment2
-  TARGET_COMPILE_PDB = CMakeFiles\ZZEN9216.dir\
-  TARGET_PDB = ZZEN9216.pdb
-
-build CMakeFiles\ZZEN9216.dir\Assessment2\bmpServer.c.obj: C_COMPILER__ZZEN9216_Debug C$:\Users\tonyetro\My$ Drive\UNSW\ZZEN9126$ Foundations$ of$ Coding$ -$ C$ and$ Assembly\ZZEN9216\Assessment2\bmpServer.c || cmake_object_order_depends_target_ZZEN9216
-  FLAGS = --coverage /Zi /Ob0 /Od /RTC1 -MDd
-  OBJECT_DIR = CMakeFiles\ZZEN9216.dir
-  OBJECT_FILE_DIR = CMakeFiles\ZZEN9216.dir\Assessment2
-  TARGET_COMPILE_PDB = CMakeFiles\ZZEN9216.dir\
-  TARGET_PDB = ZZEN9216.pdb
-
-build CMakeFiles\ZZEN9216.dir\Assessment2\asterisk.c.obj: C_COMPILER__ZZEN9216_Debug C$:\Users\tonyetro\My$ Drive\UNSW\ZZEN9126$ Foundations$ of$ Coding$ -$ C$ and$ Assembly\ZZEN9216\Assessment2\asterisk.c || cmake_object_order_depends_target_ZZEN9216
-  FLAGS = --coverage /Zi /Ob0 /Od /RTC1 -MDd
-  OBJECT_DIR = CMakeFiles\ZZEN9216.dir
-  OBJECT_FILE_DIR = CMakeFiles\ZZEN9216.dir\Assessment2
+  OBJECT_FILE_DIR = CMakeFiles\ZZEN9216.dir\Week3
   TARGET_COMPILE_PDB = CMakeFiles\ZZEN9216.dir\
   TARGET_PDB = ZZEN9216.pdb
 
@@ -85,7 +64,7 @@ build CMakeFiles\ZZEN9216.dir\Assessment2\asterisk.c.obj: C_COMPILER__ZZEN9216_D
 #############################################
 # Link the executable ZZEN9216.exe
 
-build ZZEN9216.exe: C_EXECUTABLE_LINKER__ZZEN9216_Debug CMakeFiles\ZZEN9216.dir\Assessment2\pixelColor.c.obj CMakeFiles\ZZEN9216.dir\Assessment2\mandelbrot.c.obj CMakeFiles\ZZEN9216.dir\Assessment2\bmpServer.c.obj CMakeFiles\ZZEN9216.dir\Assessment2\asterisk.c.obj
+build ZZEN9216.exe: C_EXECUTABLE_LINKER__ZZEN9216_Debug CMakeFiles\ZZEN9216.dir\Week3\mandelbrotFunctions.c.obj
   FLAGS = --coverage /Zi /Ob0 /Od /RTC1 -MDd
   LINK_FLAGS = /machine:X86 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
