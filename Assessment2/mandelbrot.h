@@ -1,8 +1,15 @@
-//
-// Created by tonyetro on 16/09/2022.
-//
+/*
+ *  mandelbrot.h
+ *  mandelbrot server
+ *
+ *  Created by Richard Buckland on 13/04/13.
+ *  Licensed under Creative Commons BY 3.0.
+ *
+ */
+#ifndef MANDELBROT_H
+#define MANDELBROT_H
 
-#ifndef ZZEN9216_MANDELBROT_H
-#define ZZEN9216_MANDELBROT_H
+int escapeSteps (double x, double y);
+void serveBMP (int socket, double xCoor, double yCoor, int zoom);
 
-#endif //ZZEN9216_MANDELBROT_H
+#endif /* MANDELBROT_H */
