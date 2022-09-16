@@ -1,5 +1,5 @@
 /**
- * Print out the result of a complex number, built using structs
+ * Print out the result of a complex number using structs
  * Written by Tony Caelum on 15/09/22
  */
 
@@ -16,18 +16,17 @@ struct complexNumber {
 
 int main(void) {
     // Read in our real and imaginary inputs.
-    double real = 0;
-    double imaginary = 0;
+    double real = 0, imaginary = 0;
     scanf("%lf %lf", &real, &imaginary);
 
     // 2. Create your struct here.
-    ComplexNumber cplxNum;
-    cplxNum.real = real;
-    cplxNum.imaginary = imaginary;
+    ComplexNumber complexNum;
+    complexNum.real = real;
+    complexNum.imaginary = imaginary;
 
     // 3. Print your struct.
-    printf("Real number: %d\n", cplxNum.real);
-    printf("Imaginary number: %d\n", cplxNum.imaginary);
+    printf("Real number: %d\n", complexNum.real);
+    printf("Imaginary number: %d\n", complexNum.imaginary);
 
     return EXIT_SUCCESS;
 }
