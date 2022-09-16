@@ -38,11 +38,11 @@ int main(int argc, char** argv) {
 
 // function to check if characters are: 0-9, A-Z and a-z
 int allowedASCIIChar(int asciiValue) {
-    if (asciiValue >= 48 && asciiValue <= 57) {  // checking: 0 to 9
+    if (asciiValue >= 48 && asciiValue <= 57) {         // check: 0-9
         return TRUE;
-    } else if (?) {  // checking: A to Z
+    } else if (asciiValue >= 65 && asciiValue <= 90) {  // check: A-Z
         return TRUE;
-    } else if (?) {  // checking: a to z
+    } else if (asciiValue >= 97 && asciiValue <= 122) { // check: a-z
         return TRUE;
     }
     return FALSE;
@@ -54,7 +54,17 @@ int numAllowedChars(char* inputStr, int length) {
     int asciiValue;  // value of ASCII character
     int index;       // index of input array
 
-    // WRITE YOUR CODE HERE
+    index = 0;
+    count = 0;
+    while (index < length) {
+        asciiValue = inputStr[index];
+        if (allowedASCIIChar(asciiValue)) {
+            count = count + 1;
+        }
+        index = index + 1;
+    }
+
+    return count;
 }
 
 // function to remove characters other than 0-9, a-z and A-Z
@@ -65,10 +75,21 @@ char* santitiseString(char* inputStr, int length) {
     int asciiValue;   // value of ASCII character
     char* outputStr;  // string buffer for output string (character array)
 
-    // WRITE YOUR CODE HERE
+    count = numAllowedChars(inputStr, length) + 1;
 
     // Step 6.3: Allocate the required memory for outputStr
     outputStr = malloc(sizeof(*outputStr) * count);
 
-    // WRITE YOUR CODE HERE
+    indexInput = 0, indexOutput = 0;
+    while (indexInput < length) {
+        asciiValue = inputStr[indexInput];
+        if (allowedASCIIChar(asciiValue)) {
+            outputStr[indexOutput] = asciiValue;
+            indexOutput = indexOutput + 1;
+        }
+        indexInput = indexInput + 1;
+    }
+
+    outputStr[indexOutput] = 0;
+    return outputStr;
 }

@@ -39,8 +39,9 @@ add_executable(ZZEN9216
 #		Week3/area.c)
 #		Week3/bitmaps/bmpCreate.c Week3/bitmaps/bmpShapeDrawing.c Week3/bitmaps/bmpShapeDrawing.h)
 #		Week3/complexNumber.c)
-		Week3/mandelbrotFunctions.c)
+		# Week3/mandelbrotFunctions.c)
 
 ####### WEEK 4
-#		Week4/sanitisingInputString.c)
-#		Week4/file.c Week4/contains_gets.c)
+#		Week4/stringsInC/sanitisingInputString.c)
+		Week4/contains_gets.c)
+#		Week4/file.c)

@@ -14,7 +14,6 @@
 int line_contains_gets(char *line);
 
 int main(void) {
-
     // open a file in read mode
     FILE *input_file_pointer = fopen("file.c", "r");
 
@@ -25,7 +24,6 @@ int main(void) {
     // fgets() is "secure", since we specify the max length of the buffer
     // we are writing to
     while(fgets(buffer, MAX_LINE_LENGTH, input_file_pointer)) {
-
         int result = line_contains_gets(buffer);
 
         // if there is an occurrence of gets() in the line
@@ -46,6 +44,8 @@ int main(void) {
 // if it does,    return 1
 // if it doesn't, return 0
 int line_contains_gets(char *line) {
-
+    if (line > MAX_LINE_LENGTH) {
+        return 1;
+    }
     return 0;
 }
