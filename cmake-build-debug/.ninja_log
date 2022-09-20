@@ -1,8 +1,0 @@
-# ninja log v5
-146	244	6850506593919266	ZZEN9216.exe	bd27c4133c4ddc1d
-1	81	6850516087717591	build.ninja	999784b3f913a6a3
-0	142	6850119448517927	CMakeFiles/ZZEN9216.dir/Week3/mandelbrotFunctions.c.obj	d666000317e41e99
-1	145	6850506593159279	CMakeFiles/ZZEN9216.dir/Week4/contains_gets.c.obj	47284bfede5a6943
-1	420	6850117588733151	CMakeFiles/ZZEN9216.dir/Assessment2/pixelColor.c.obj	f4f28ace2febbce0
-6	420	6850117588743161	CMakeFiles/ZZEN9216.dir/Assessment2/asterisk.c.obj	b7029e095068cd91
-0	141	6850503961860455	CMakeFiles/ZZEN9216.dir/Week4/file.c.obj	e132e3778ad36f38

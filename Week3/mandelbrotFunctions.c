@@ -19,10 +19,10 @@ struct complexNumber {
 };
 
 // Function declarations.
-struct complexNumber mandelbrotAdd(struct complexNumber c1,
-                                   struct complexNumber c2);
-struct complexNumber mandelbrotSquare(struct complexNumber c);
-double mandelbrotMagnitude(struct complexNumber c);
+ComplexNumber mandelbrotAdd(ComplexNumber c1,
+                            ComplexNumber c2);
+ComplexNumber mandelbrotSquare(ComplexNumber c);
+double mandelbrotMagnitude(ComplexNumber c);
 int escapeSteps(double x, double y);
 
 // DO NOT MODIFY THE MAIN FUNCTION - this automarker might fail you
@@ -61,21 +61,21 @@ int escapeSteps(double x, double y) {
     return counter;
 }
 
-struct complexNumber mandelbrotAdd(struct complexNumber c1,
-                                   struct complexNumber c2) {
+ComplexNumber mandelbrotAdd(ComplexNumber c1,
+                            ComplexNumber c2) {
     ComplexNumber cplxNum;
     cplxNum.realComp = c1.realComp + c2.realComp;
     cplxNum.imaginaryComp = c1.imaginaryComp + c2.imaginaryComp;
     return cplxNum;
 }
 
-struct complexNumber mandelbrotSquare(struct complexNumber c) {
+ComplexNumber mandelbrotSquare(ComplexNumber c) {
     ComplexNumber cplxNum;
     cplxNum.realComp = pow(c.realComp, 2) - pow(c.imaginaryComp, 2);
     cplxNum.imaginaryComp = 2 * c.realComp * c.imaginaryComp;
     return cplxNum;
 }
 
-double mandelbrotMagnitude(struct complexNumber c) {
+double mandelbrotMagnitude(ComplexNumber c) {
     return sqrt(pow(c.realComp, 2) + pow(c.imaginaryComp, 2));
 }
