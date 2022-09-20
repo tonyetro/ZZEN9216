@@ -7,14 +7,14 @@
 
 #include "pixelColor.h"
 
-unsigned char stepsToRed (int steps) {
+unsigned char stepsToRed(int steps) {
     return 0;
 }
 
-unsigned char stepsToBlue (int steps) {
+unsigned char stepsToBlue(int steps) {
     return 0;
 }
 
-unsigned char stepsToGreen (int steps) {
+unsigned char stepsToGreen(int steps) {
     return 0;
 }

@@ -9,7 +9,7 @@
 #include "hash_string.h"
 
 int main(void) {
-    int counter = 119600;
+    int counter = 0;
     char *currentHash;
     // generate a SHA1 hash of your zID
     char *target_hash = hash_string("z5411839", "sha1");

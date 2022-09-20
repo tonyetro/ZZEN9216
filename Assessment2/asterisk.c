@@ -10,7 +10,8 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define MAX_ITERATIONS 256
+#define SIZE 64
+#define MAX_STEPS 256
 
 typedef struct complexNumber ComplexNumber;
 
@@ -21,14 +22,11 @@ struct complexNumber {
     double imaginaryComp;
 };
 
-// Function declarations.
-struct complexNumber mandelbrotAdd(struct complexNumber c1,
-                                   struct complexNumber c2);
-struct complexNumber mandelbrotSquare(struct complexNumber c);
-double mandelbrotMagnitude(struct complexNumber c);
+ComplexNumber mandelbrotAdd(ComplexNumber c1,
+                            ComplexNumber c2);
+ComplexNumber mandelbrotSquare(ComplexNumber c);
+double mandelbrotMagnitude(ComplexNumber c);
 int escapeSteps(double x, double y);
-
-// Add your functions prototypes here.
 void printMandelbrot (double x, double y, int z);
 
 int main (int argc, char *argv[]) {
@@ -52,7 +50,28 @@ int main (int argc, char *argv[]) {
 }
 
 void printMandelbrot(double x, double y, int z) {
-    // WRITE YOUR CODE HERE
+    double pixelDistance = pow(2, -z);    
+    int half = SIZE / 2;
+    int row = half;
+    int col = -half;
+
+    // code to print in columns
+    while (row > -half) {
+        col = -half;
+        // code to print in rows
+        while (col < half) {
+            if (escapeSteps(
+                (col * pixelDistance) + x,
+                (row * pixelDistance) + y) < MAX_STEPS) {
+                printf(" ");
+            } else {
+                printf("*");
+            }
+            col = col + 1;
+        }
+        printf("\n");
+        row = row - 1;
+    } 
 }
 
 int escapeSteps(double x, double y) {
@@ -64,7 +83,7 @@ int escapeSteps(double x, double y) {
     complexNum.realComp = x;
     complexNum.imaginaryComp = y;
 
-    while (counter < MAX_ITERATIONS) {
+    while (counter < MAX_STEPS) {
         if (magnitude <= 2) {
             originPoint = mandelbrotSquare(originPoint);
             originPoint = mandelbrotAdd(originPoint, complexNum);
@@ -76,24 +95,24 @@ int escapeSteps(double x, double y) {
         counter = counter + 1;
     }
 
-    return magnitude;
+    return counter;
 }
 
-struct complexNumber mandelbrotAdd(struct complexNumber c1,
-                                   struct complexNumber c2) {
-    ComplexNumber cplxNumAdd;
-    cplxNumAdd.realComp = c1.realComp + c2.realComp;
-    cplxNumAdd.imaginaryComp = c1.imaginaryComp + c2.imaginaryComp;
-    return cplxNumAdd;
+ComplexNumber mandelbrotAdd(ComplexNumber c1,
+                            ComplexNumber c2) {
+    ComplexNumber cplxNum;
+    cplxNum.realComp = c1.realComp + c2.realComp;
+    cplxNum.imaginaryComp = c1.imaginaryComp + c2.imaginaryComp;
+    return cplxNum;
 }
 
-struct complexNumber mandelbrotSquare(struct complexNumber c) {
-    ComplexNumber cplxNumSquare;
-    cplxNumSquare.realComp = pow(c.realComp, 2) - pow(c.imaginaryComp, 2);
-    cplxNumSquare.imaginaryComp = 2 * c.realComp * c.imaginaryComp;
-    return cplxNumSquare;
+ComplexNumber mandelbrotSquare(ComplexNumber c) {
+    ComplexNumber cplxNum;
+    cplxNum.realComp = pow(c.realComp, 2) - pow(c.imaginaryComp, 2);
+    cplxNum.imaginaryComp = 2 * c.realComp * c.imaginaryComp;
+    return cplxNum;
 }
 
-double mandelbrotMagnitude(struct complexNumber c) {
+double mandelbrotMagnitude(ComplexNumber c) {
     return sqrt(pow(c.realComp, 2) + pow(c.imaginaryComp, 2));
 }
