@@ -50,7 +50,7 @@ int main (int argc, char *argv[]) {
 }
 
 void printMandelbrot(double x, double y, int z) {
-    double pixelDistance = pow(2, -z);    
+    double pixelDistance = pow(2, -z);
     int half = SIZE / 2;
     int row = half;
     int col = -half;
@@ -71,7 +71,7 @@ void printMandelbrot(double x, double y, int z) {
         }
         printf("\n");
         row = row - 1;
-    } 
+    }
 }
 
 int escapeSteps(double x, double y) {
@@ -89,7 +89,7 @@ int escapeSteps(double x, double y) {
             originPoint = mandelbrotAdd(originPoint, complexNum);
             magnitude = mandelbrotMagnitude(originPoint);
         } else {
-            break;
+            counter = MAX_STEPS; // Escape while loop
         }
 
         counter = counter + 1;

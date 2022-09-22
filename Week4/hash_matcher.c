@@ -18,15 +18,15 @@ int main(void) {
     while (counter < MAX_ATTEMPTS) {
         // store counter int as a string with a SHA-1 compliant buffer
         snprintf(currentHash, 40, "%d", counter);
-        // generate a new hash and reuse variable 
+        // generate a new hash and reuse variable
         currentHash = hash_string(currentHash, "sha1");
-        
+
         printf("Attempt %d of %d: %s\n", counter, MAX_ATTEMPTS, currentHash);
 
         // compare it to the original (first four characters)
         if (strncmp(currentHash, target_hash, 4) == 0) {
             printf("\nWe have a partial match:\nCurrent hash:\t%s\nOriginal hash:\t%s\n\n", currentHash, target_hash);
-            break;
+            counter = MAX_ATTEMPTS; // Escape while loop
         } else if (counter + 1 == MAX_ATTEMPTS) {
             printf("No match found.");
         }

@@ -90,25 +90,25 @@ void setPixelRGB(unsigned char *pixelData,
 // 'colour' parameter uses value associated with #defines
 void setPixelColour(unsigned char *pixelData, int colour, int x, int y) {
     if (colour == WHITE) {
-        setPixelRGB(pixelData, x, y, 255, 255, 255);  // hex: (0xFF, 0xFF, 0xFF)
+        setPixelRGB(pixelData, x, y, 255, 255, 255);
     } else if (colour == BLACK) {
-        setPixelRGB(pixelData, x, y, 0, 0, 0);  // hex: (0x00, 0x00, 0x00)
+        setPixelRGB(pixelData, x, y, 0, 0, 0);
     } else if (colour == GREY) {
-        setPixelRGB(pixelData, x, y, 128, 128, 128);  // hex: (0x80, 0x80, 0x80)
+        setPixelRGB(pixelData, x, y, 128, 128, 128);
     } else if (colour == RED) {
-        setPixelRGB(pixelData, x, y, 255, 20, 20);  // hex: (0xFF, 0x14, 0x14)
+        setPixelRGB(pixelData, x, y, 255, 20, 20);
     } else if (colour == ORANGE) {
-        setPixelRGB(pixelData, x, y, 255, 100, 0);  // hex: (0xFF, 0x64, 0x00)
+        setPixelRGB(pixelData, x, y, 255, 100, 0);
     } else if (colour == YELLOW) {
-        setPixelRGB(pixelData, x, y, 255, 200, 0);  // hex: (0xFF, 0xC8, 0x00)
+        setPixelRGB(pixelData, x, y, 255, 200, 0);
     } else if (colour == GREEN) {
-        setPixelRGB(pixelData, x, y, 50, 200, 50);  // hex: (0x32, 0xC8, 0x32)
+        setPixelRGB(pixelData, x, y, 50, 200, 50);
     } else if (colour == BLUE) {
-        setPixelRGB(pixelData, x, y, 50, 100, 255);  // hex: (0x32, 0x64, 0xFF)
+        setPixelRGB(pixelData, x, y, 50, 100, 255);
     } else if (colour == PURPLE) {
-        setPixelRGB(pixelData, x, y, 120, 0, 255);  // hex: (0x78, 0x00, 0xFF)
+        setPixelRGB(pixelData, x, y, 120, 0, 255);
     } else if (colour == PINK) {
-        setPixelRGB(pixelData, x, y, 255, 80, 170);  // hex: (0xFF, 0x50, 0xAA)
+        setPixelRGB(pixelData, x, y, 255, 80, 170);
     }
 }
 

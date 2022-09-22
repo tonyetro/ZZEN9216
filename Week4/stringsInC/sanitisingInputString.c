@@ -38,14 +38,13 @@ int main(int argc, char** argv) {
 
 // function to check if characters are: 0-9, A-Z and a-z
 int allowedASCIIChar(int asciiValue) {
-    if (asciiValue >= 48 && asciiValue <= 57) {         // check: 0-9
-        return TRUE;
-    } else if (asciiValue >= 65 && asciiValue <= 90) {  // check: A-Z
-        return TRUE;
-    } else if (asciiValue >= 97 && asciiValue <= 122) { // check: a-z
-        return TRUE;
+    int returnVal = FALSE;
+    if ((asciiValue >= 48 && asciiValue <= 57) ||  // 0-9
+        (asciiValue >= 65 && asciiValue <= 90) ||  // A-Z
+        (asciiValue >= 97 && asciiValue <= 122)) { // a-z
+        returnVal = TRUE;
     }
-    return FALSE;
+    return returnVal;
 }
 
 // count the number of allowed characters in the input string

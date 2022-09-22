@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAX_LINE_LENGTH 255
 
@@ -39,13 +40,11 @@ int main(void) {
     return 0;
 }
 
-// TODO: Write this function
-// check if a line contains the gets() function
-// if it does,    return 1
-// if it doesn't, return 0
 int line_contains_gets(char *line) {
-    if (line > MAX_LINE_LENGTH) {
-        return 1;
+    int getsFlag = 0;
+    if (strstr(line, "gets(") != NULL) {
+        getsFlag = 1;
     }
-    return 0;
+
+    return getsFlag;
 }

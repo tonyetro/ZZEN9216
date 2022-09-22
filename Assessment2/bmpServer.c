@@ -28,7 +28,7 @@ int makeServerSocket (int portno);
 #define NUMBER_OF_PAGES_TO_SERVE 10
 // After serving this many pages the server will halt
 
-int main (int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
     printf ("************************************\n");
     printf ("Starting simple server %f\n", SIMPLE_SERVER_VERSION);
     printf ("Serving bmps since 2012\n");
@@ -42,8 +42,7 @@ int main (int argc, char *argv[]) {
 
     int numberServed = 0;
     while (numberServed < NUMBER_OF_PAGES_TO_SERVE) {
-
-        printf ("*** So far served %d pages ***\n", numberServed);
+        printf("*** So far served %d pages ***\n", numberServed);
 
         int connectionSocket = waitForConnection (serverSocket);
         // Wait for a request to be sent from a web browser, open a
@@ -56,11 +55,11 @@ int main (int argc, char *argv[]) {
             request,
             (sizeof request) - 1
         );
-        assert (bytesRead >= 0);
+        assert(bytesRead >= 0);
         // Were we able to read any data from the connection?
 
         // Print entire request to the console
-        printf (" *** Received http request ***\n %s\n", request);
+        printf(" *** Received http request ***\n %s\n", request);
 
         double x;
         double y;
@@ -75,7 +74,7 @@ int main (int argc, char *argv[]) {
         }
 
         // Send the browser a simple html page using http
-        printf (" *** Sending http response ***\n");
+        printf(" *** Sending http response ***\n");
 
         // Call the mandelbrot function to create the BMP and send it
         serveBMP(connectionSocket, x, y, z);
@@ -87,14 +86,14 @@ int main (int argc, char *argv[]) {
     }
 
     // Close the server connection after we are done
-    printf ("** shutting down the server **\n");
-    close (serverSocket);
+    printf("** shutting down the server **\n");
+    close(serverSocket);
 
     return EXIT_SUCCESS;
 }
 
 // Start the server listening on the specified port number
-int makeServerSocket (int portNumber) {
+int makeServerSocket(int portNumber) {
     // Create socket
     int serverSocket = socket (AF_INET, SOCK_STREAM, 0);
     assert (serverSocket >= 0);
@@ -110,7 +109,7 @@ int makeServerSocket (int portNumber) {
 
     // Let the server start immediately after a previous shutdown
     int optionValue = 1;
-    setsockopt (
+    setsockopt(
         serverSocket,
         SOL_SOCKET,
         SO_REUSEADDR,
@@ -119,13 +118,13 @@ int makeServerSocket (int portNumber) {
     );
 
     int bindSuccess =
-        bind (
+        bind(
             serverSocket,
             (struct sockaddr *) &serverAddress,
             sizeof (serverAddress)
         );
 
-    assert (bindSuccess >= 0);
+    assert(bindSuccess >= 0);
     // If this assert fails wait a short while to let the operating
     // system clear the port before trying again
 
@@ -134,22 +133,22 @@ int makeServerSocket (int portNumber) {
 
 // Wait for a browser to request a connection,
 // returns the socket on which the conversation will take place
-int waitForConnection (int serverSocket) {
+int waitForConnection(int serverSocket) {
     // Listen for a connection
     const int serverMaxBacklog = 10;
-    listen (serverSocket, serverMaxBacklog);
+    listen(serverSocket, serverMaxBacklog);
 
     // Accept the connection
     struct sockaddr_in clientAddress;
     socklen_t clientLen = sizeof (clientAddress);
     int connectionSocket =
-        accept (
+        accept(
             serverSocket,
             (struct sockaddr *) &clientAddress,
             &clientLen
         );
 
-    assert (connectionSocket >= 0);
+    assert(connectionSocket >= 0);
     // Error on accept
 
     return (connectionSocket);
