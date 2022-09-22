@@ -85,9 +85,9 @@ void serveBMP(int socket, double xCoor, double yCoor, int zoom) {
 
     // If you completed Part 2 (asterisk.c), add your printMandelbrot
     // code here and adapt it to work with pixels.
-    unsigned char pixelData[IMG_WIDTH * PIXEL_SIZE * IMG_HEIGHT] = {0};
+    unsigned char pixelData[ROW_STRIDE * IMG_HEIGHT] = {0};
 
-    printMandelbrot(pixelData, 0, 0, 7);
+    printMandelbrot(pixelData, xCoor, yCoor, zoom);
 
     write(socket, pixelData, sizeof(pixelData));
 }
@@ -97,6 +97,9 @@ void printMandelbrot(unsigned char *pixelData, double xCoor, double yCoor, int z
     int half = IMG_HEIGHT / 2;
     int row = half;
     int col = -half;
+    
+    int p = yCoor * ROW_STRIDE + xCoor * PIXEL_SIZE;
+    yCoor = IMG_HEIGHT - yCoor - 1;
 
     // code to print in columns
     while (row > -half) {
@@ -106,28 +109,20 @@ void printMandelbrot(unsigned char *pixelData, double xCoor, double yCoor, int z
             if (escapeSteps(
                 (col * pixelDistance) + xCoor,
                 (row * pixelDistance) + yCoor) < MAX_STEPS) {
-                setPixelRGB(pixelData, xCoor, yCoor, 255, 255, 255);
+                pixelData[p + 0] = 255;
+                pixelData[p + 1] = 255;
+                pixelData[p + 2] = 255;
+                p = p + PIXEL_SIZE;
             } else {
-                setPixelRGB(pixelData, xCoor, yCoor, 0, 0, 0);
+                pixelData[p + 0] = 0;
+                pixelData[p + 1] = 0;
+                pixelData[p + 2] = 0;
+                p = p + PIXEL_SIZE;
             }
             col = col + 1;
         }
         row = row - 1;
     }
-}
-
-void setPixelRGB(unsigned char *pixelData,
-                 int x, int y, unsigned char r, unsigned char g, unsigned char b) {
-    // Reverse y to start at top of bitmap image
-    y = IMG_HEIGHT - y - 1;
-
-    // Calculate the pixel index on bitmap image and store in 'p'
-    int p = y * ROW_STRIDE + x * PIXEL_SIZE;
-
-    // Assign the r (Red), g (Green), and b (Blue) parameters to the pixelData elements below
-    pixelData[p + 0] = b;
-    pixelData[p + 1] = g;
-    pixelData[p + 2] = r;
 }
 
 int escapeSteps(double x, double y) {
@@ -156,6 +151,7 @@ ComplexNumber mandelbrotAdd(ComplexNumber c1,
     ComplexNumber cplxNum;
     cplxNum.realComp = c1.realComp + c2.realComp;
     cplxNum.imaginaryComp = c1.imaginaryComp + c2.imaginaryComp;
+    // printf("\nADD 1 REAL: %g, ADD 1 IMAG: %g\nADD 2 REAL: %g, ADD 2 IMAG: %g\n", c1.realComp, c1.imaginaryComp, c2.realComp, c2.imaginaryComp);
     return cplxNum;
 }
 
@@ -163,9 +159,11 @@ ComplexNumber mandelbrotSquare(ComplexNumber c) {
     ComplexNumber cplxNum;
     cplxNum.realComp = pow(c.realComp, 2) - pow(c.imaginaryComp, 2);
     cplxNum.imaginaryComp = 2 * c.realComp * c.imaginaryComp;
+    // printf("\nSQUARE REAL: %g, SQUARE IMAG: %g\n", c.realComp, c.imaginaryComp);
     return cplxNum;
 }
 
 double mandelbrotMagnitude(ComplexNumber c) {
     return sqrt(pow(c.realComp, 2) + pow(c.imaginaryComp, 2));
+    // printf("\n%g\n", sqrt(pow(c.realComp, 2) + pow(c.imaginaryComp, 2)));
 }

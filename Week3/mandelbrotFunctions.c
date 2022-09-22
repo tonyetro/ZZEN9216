@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define MAX_ITERATIONS 256
+#define MAX_STEPS 256
 
 typedef struct complexNumber ComplexNumber;
 
@@ -46,14 +46,10 @@ int escapeSteps(double x, double y) {
     complexNum.realComp = x;
     complexNum.imaginaryComp = y;
 
-    while (counter < MAX_ITERATIONS) {
-        if (magnitude < 2) {
-            originPoint = mandelbrotSquare(originPoint);
-            originPoint = mandelbrotAdd(originPoint, complexNum);
-            magnitude = mandelbrotMagnitude(originPoint);
-        } else {
-            break;
-        }
+    while (counter < MAX_STEPS && magnitude <= 2) {
+        originPoint = mandelbrotSquare(originPoint);
+        originPoint = mandelbrotAdd(originPoint, complexNum);
+        magnitude = mandelbrotMagnitude(originPoint);
 
         counter = counter + 1;
     }
