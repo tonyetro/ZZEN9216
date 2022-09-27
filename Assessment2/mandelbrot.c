@@ -97,28 +97,25 @@ void printMandelbrot(unsigned char *pixelData, double xCoor, double yCoor, int z
     int half = IMG_HEIGHT / 2;
     int row = half;
     int col = -half;
-    
-    int p = yCoor * ROW_STRIDE + xCoor * PIXEL_SIZE;
-    yCoor = IMG_HEIGHT - yCoor - 1;
+
+    int p = (yCoor * ROW_STRIDE) + (xCoor * PIXEL_SIZE);
 
     // code to print in columns
     while (row > -half) {
         col = -half;
         // code to print in rows
         while (col < half) {
-            if (escapeSteps(
+            int result = escapeSteps(
                 (col * pixelDistance) + xCoor,
-                (row * pixelDistance) + yCoor) < MAX_STEPS) {
-                pixelData[p + 0] = 255;
-                pixelData[p + 1] = 255;
-                pixelData[p + 2] = 255;
-                p = p + PIXEL_SIZE;
-            } else {
-                pixelData[p + 0] = 0;
-                pixelData[p + 1] = 0;
-                pixelData[p + 2] = 0;
-                p = p + PIXEL_SIZE;
+                (row * pixelDistance) + yCoor);
+
+            if (result < MAX_STEPS) {
+                pixelData[p + 0] = -result;
+                pixelData[p + 1] = -result;
+                pixelData[p + 2] = -result;
             }
+
+            p = p + PIXEL_SIZE;
             col = col + 1;
         }
         row = row - 1;
