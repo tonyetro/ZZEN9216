@@ -17,10 +17,11 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #define MAX_INPUT_SIZE 256
 
-int main (int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
 
     // read from stdin and store the value as a string called "little"
     char *little = malloc(MAX_INPUT_SIZE);
@@ -29,10 +30,29 @@ int main (int argc, char *argv[]) {
 
     // TODO:
     // Your code goes here
+    // 0x00 0x00 0xf7 0x2c
 
+    int strLength = strlen(little) - 2;
+    char *result = {0};
+
+    // If input contains space (ASCII = 20), do calculations
+    int idx = strLength;
+
+    if (strchr(little, ' ')) {
+        while (0 != idx) {
+            if (little[idx] == ' ') {
+                printf("%d: ' '\n", idx);
+                idx = idx - 1;
+            }
+
+            printf("%d: 0x00 0x00 0xf7 0x2c\n", idx);
+            idx = idx - 1;
+        }
+    }
 
     // replace this print statement with your own once you have converted the string.
-    // printf("%s\n", YOUR_BIG-ENDIAN_STRING);
+    printf("%s\n", little);
+    printf("%s\n", result);
 
     free(little);
 
