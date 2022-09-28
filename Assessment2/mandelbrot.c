@@ -95,13 +95,13 @@ void serveBMP(int socket, double xCoor, double yCoor, int zoom) {
 void printMandelbrot(unsigned char *pixelData, double xCoor, double yCoor, int zoom) {
     double pixelDistance = pow(2, -zoom);
     int half = IMG_HEIGHT / 2;
-    int row = half;
+    int row = -half;
     int col = -half;
 
-    int p = (yCoor * ROW_STRIDE) + (xCoor * PIXEL_SIZE);
+    int p = 0;
 
     // code to print in columns
-    while (row > -half) {
+    while (row < half) {
         col = -half;
         // code to print in rows
         while (col < half) {
@@ -109,16 +109,59 @@ void printMandelbrot(unsigned char *pixelData, double xCoor, double yCoor, int z
                 (col * pixelDistance) + xCoor,
                 (row * pixelDistance) + yCoor);
 
-            if (result < MAX_STEPS) {
-                pixelData[p + 0] = -result;
-                pixelData[p + 1] = -result;
-                pixelData[p + 2] = -result;
+            if (result <= 10) {
+                pixelData[p + 0] = 255;
+                pixelData[p + 1] = 255;
+                pixelData[p + 2] = 255;
+            } else if (result <= 20) {
+                pixelData[p + 0] = 245;
+                pixelData[p + 1] = 245;
+                pixelData[p + 2] = 245;
+            } else if (result <= 30) {
+                pixelData[p + 0] = 235;
+                pixelData[p + 1] = 235;
+                pixelData[p + 2] = 235;
+            } else if (result <= 40) {
+                pixelData[p + 0] = 225;
+                pixelData[p + 1] = 225;
+                pixelData[p + 2] = 225;
+            } else if (result <= 50) {
+                pixelData[p + 0] = 215;
+                pixelData[p + 1] = 215;
+                pixelData[p + 2] = 215;
+            } else if (result <= 60) {
+                pixelData[p + 0] = 205;
+                pixelData[p + 1] = 205;
+                pixelData[p + 2] = 205;
+            } else if (result <= 70) {
+                pixelData[p + 0] = 195;
+                pixelData[p + 1] = 195;
+                pixelData[p + 2] = 195;
+            } else if (result <= 80) {
+                pixelData[p + 0] = 185;
+                pixelData[p + 1] = 185;
+                pixelData[p + 2] = 185;
+            } else if (result <= 90) {
+                pixelData[p + 0] = 175;
+                pixelData[p + 1] = 175;
+                pixelData[p + 2] = 175;
+            } else if (result <= 100) {
+                pixelData[p + 0] = 165;
+                pixelData[p + 1] = 165;
+                pixelData[p + 2] = 165;
+            } else if (result >= MAX_STEPS) {
+                pixelData[p + 0] = 0;
+                pixelData[p + 1] = 0;
+                pixelData[p + 2] = 0;
+            } else {
+                pixelData[p + 0] = result;
+                pixelData[p + 1] = result;
+                pixelData[p + 2] = result;
             }
-
             p = p + PIXEL_SIZE;
             col = col + 1;
         }
-        row = row - 1;
+        row = row + 1;
     }
 }
 
@@ -148,7 +191,7 @@ ComplexNumber mandelbrotAdd(ComplexNumber c1,
     ComplexNumber cplxNum;
     cplxNum.realComp = c1.realComp + c2.realComp;
     cplxNum.imaginaryComp = c1.imaginaryComp + c2.imaginaryComp;
-    // printf("\nADD 1 REAL: %g, ADD 1 IMAG: %g\nADD 2 REAL: %g, ADD 2 IMAG: %g\n", c1.realComp, c1.imaginaryComp, c2.realComp, c2.imaginaryComp);
+
     return cplxNum;
 }
 
@@ -156,11 +199,10 @@ ComplexNumber mandelbrotSquare(ComplexNumber c) {
     ComplexNumber cplxNum;
     cplxNum.realComp = pow(c.realComp, 2) - pow(c.imaginaryComp, 2);
     cplxNum.imaginaryComp = 2 * c.realComp * c.imaginaryComp;
-    // printf("\nSQUARE REAL: %g, SQUARE IMAG: %g\n", c.realComp, c.imaginaryComp);
+
     return cplxNum;
 }
 
 double mandelbrotMagnitude(ComplexNumber c) {
     return sqrt(pow(c.realComp, 2) + pow(c.imaginaryComp, 2));
-    // printf("\n%g\n", sqrt(pow(c.realComp, 2) + pow(c.imaginaryComp, 2)));
 }
