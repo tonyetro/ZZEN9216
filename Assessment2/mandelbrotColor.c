@@ -115,9 +115,9 @@ void printMandelbrot(unsigned char *pixelData, double xCoor, double yCoor, int z
              * always adds 1 before returning
              */
             if (result < MAX_STEPS) {
-                pixelData[p + 0] = (MAX_STEPS - 1) - result;
-                pixelData[p + 1] = (MAX_STEPS - 1) - result;
-                pixelData[p + 2] = (MAX_STEPS - 1) - result;
+                pixelData[p + 0] = stepsToBlue(result);
+                pixelData[p + 1] = stepsToGreen(result);
+                pixelData[p + 2] = stepsToRed(result);
             } else {
                 pixelData[p + 0] = 0;
                 pixelData[p + 1] = 0;

@@ -10,6 +10,9 @@
 #ifndef PIXELCOLOR_H
 #define PIXELCOLOR_H
 
+// Escape steps maximum constant
+#define MAX_STEPS 256
+
 unsigned char stepsToRed(int steps);
 unsigned char stepsToBlue(int steps);
 unsigned char stepsToGreen(int steps);
