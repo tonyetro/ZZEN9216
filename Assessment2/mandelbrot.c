@@ -1,14 +1,13 @@
-/*
- *  This file contains the Mandelbrot functions and creates the
- *  image of the Mandelbrot Set.
+/**
+ *  This file contains the Mandelbrot functions and creates the image
+ *  of the Mandelbrot Set and sent to a browser via localhost server.
  *
- *  Written by <your-name-here> on dd/mm/yy
+ *  Written by Tony Caelum on 15/19/22
  *
  *  Starter code written by Alli Murray on 19/04/22.
  *  Containing code created by Tim Lambert on 02/04/12
  *  and Richard Buckland on 28/01/11.
  *  Copyright 2012 Licensed under Creative Commons SA-BY-NC 3.0.
- *
  */
 
 #include <stdio.h>
@@ -20,11 +19,14 @@
 #include "mandelbrot.h"
 #include "pixelColor.h"
 
+// Image size constants
 #define IMG_WIDTH 512
 #define IMG_HEIGHT 512
-#define PIXEL_SIZE 3
+#define HALF (IMG_WIDTH / 2) // keep a half value to reference
+// Pixel reference constants
+#define PIXEL_SIZE 3         // consistent with 3 values: R, G and B
 #define ROW_STRIDE (IMG_WIDTH * PIXEL_SIZE)
-
+// Escape steps maximum constant
 #define MAX_STEPS 256
 
 typedef struct complexNumber ComplexNumber;
@@ -34,16 +36,12 @@ struct complexNumber {
     double imaginaryComp;
 };
 
-ComplexNumber mandelbrotAdd(ComplexNumber c1,
-                            ComplexNumber c2);
+void printMandelbrot(unsigned char *pixelData,
+                     double xCoor, double yCoor, int zoom);
+int escapeSteps(double x, double y);
+ComplexNumber mandelbrotAdd(ComplexNumber c1, ComplexNumber c2);
 ComplexNumber mandelbrotSquare(ComplexNumber c);
 double mandelbrotMagnitude(ComplexNumber c);
-void printMandelbrot(unsigned char *pixelData, double xCoor, double yCoor, int zoom);
-int escapeSteps(double x, double y);
-
-void setPixelRGB(unsigned char *pixelData,
-                 int x, int y,
-                 unsigned char r, unsigned char g, unsigned char b);
 
 void serveBMP(int socket, double xCoor, double yCoor, int zoom) {
     char* message;
@@ -62,102 +60,71 @@ void serveBMP(int socket, double xCoor, double yCoor, int zoom) {
     char bmpHeader[] = {
         // BITMAPFILEHEADER
         0x42, 0x4D,              // file type ("BM")
-        0x36, 0x00, 0x0C, 0x00,  // bitmap file size (in bytes)
+        0x36, 0x00, 0x0C, 0x00,  // bitmap file size
         0x00, 0x00,              // reserved 1 (must be 0)
         0x00, 0x00,              // reserved 2 (must be 0)
-        0x36, 0x00, 0x00, 0x00,  // offset (in bytes) for where pixel data starts (54)
+        0x36, 0x00, 0x00, 0x00,  // offset (in bytes)
         // BITMAPINFOHEADER
-        0x28, 0x00, 0x00, 0x00,  // bitmap information size (in bytes) (40)
-        0x00, 0x02, 0x00, 0x00,  // width of bitmap (in pixels)
-        0x00, 0x02, 0x00, 0x00,  // height of bitmap (in pixels)
+        0x28, 0x00, 0x00, 0x00,  // bitmap infor size
+        0x00, 0x02, 0x00, 0x00,  // width of bitmap
+        0x00, 0x02, 0x00, 0x00,  // height of bitmap
         0x01, 0x00,              // number of planes (1)
-        0x18, 0x00,              // bit depth (24 for 24-bit bitmap)
-        0x00, 0x00, 0x00, 0x00,  // type of compression (0 for uncompressed bitmaps)
-        0x00, 0x00, 0x0C, 0x00,  // image size (IMG_WIDTH * PIXEL_SIZE * IMG_HEIGHT)
-        0x00, 0x00, 0x00, 0x00,  // horizontal resolution (can be ignored)
-        0x00, 0x00, 0x00, 0x00,  // vertical resolution (can be ignored)
-        0x00, 0x00, 0x00, 0x00,  // colours used (0 = max for bit depth used)
-        0x00, 0x00, 0x00, 0x00   // important colours (0 = all colours required)
+        0x18, 0x00,              // bit depth
+        0x00, 0x00, 0x00, 0x00,  // compression type
+        0x00, 0x00, 0x0C, 0x00,  // image size
+        0x00, 0x00, 0x00, 0x00,  // horizontal res
+        0x00, 0x00, 0x00, 0x00,  // vertical res
+        0x00, 0x00, 0x00, 0x00,  // colours used
+        0x00, 0x00, 0x00, 0x00   // important colours
     };
     write(socket, bmpHeader, sizeof(bmpHeader));
 
-    // TODO: Write your code here to create and serve the bmp image.
-
-    // If you completed Part 2 (asterisk.c), add your printMandelbrot
-    // code here and adapt it to work with pixels.
+    // 1-D array to store all pixel RGB values
     unsigned char pixelData[ROW_STRIDE * IMG_HEIGHT] = {0};
 
+    // Main driver - coordinates passed in and zoom level determine the
+    // coming math calculations
     printMandelbrot(pixelData, xCoor, yCoor, zoom);
 
+    // Write print BMP data to localhost via socket
     write(socket, pixelData, sizeof(pixelData));
 }
 
 void printMandelbrot(unsigned char *pixelData, double xCoor, double yCoor, int zoom) {
     double pixelDistance = pow(2, -zoom);
-    int half = IMG_HEIGHT / 2;
-    int row = -half;
-    int col = -half;
+    int col, row = -HALF; // initialise col, set row to half IMG_WIDTH
+    int p = 0; // p should start at zero and increase each iteration
 
-    int p = 0;
-
-    // code to print in columns
-    while (row < half) {
-        col = -half;
-        // code to print in rows
-        while (col < half) {
+    // Start bottom-left most point, working right and upwards towards
+    // the top-left corner
+    // Outer while loop: print in columns (image height)
+    while (row < HALF) {
+        col = -HALF;
+        // Inner while loop: print in rows (image width)
+        while (col < HALF) {
+            // Calculate how many steps required at each point to
+            // escape according to mandelbrot algorithm
             int result = escapeSteps(
                 (col * pixelDistance) + xCoor,
                 (row * pixelDistance) + yCoor);
 
-            if (result <= 10) {
-                pixelData[p + 0] = 255;
-                pixelData[p + 1] = 255;
-                pixelData[p + 2] = 255;
-            } else if (result <= 20) {
-                pixelData[p + 0] = 245;
-                pixelData[p + 1] = 245;
-                pixelData[p + 2] = 245;
-            } else if (result <= 30) {
-                pixelData[p + 0] = 235;
-                pixelData[p + 1] = 235;
-                pixelData[p + 2] = 235;
-            } else if (result <= 40) {
-                pixelData[p + 0] = 225;
-                pixelData[p + 1] = 225;
-                pixelData[p + 2] = 225;
-            } else if (result <= 50) {
-                pixelData[p + 0] = 215;
-                pixelData[p + 1] = 215;
-                pixelData[p + 2] = 215;
-            } else if (result <= 60) {
-                pixelData[p + 0] = 205;
-                pixelData[p + 1] = 205;
-                pixelData[p + 2] = 205;
-            } else if (result <= 70) {
-                pixelData[p + 0] = 195;
-                pixelData[p + 1] = 195;
-                pixelData[p + 2] = 195;
-            } else if (result <= 80) {
-                pixelData[p + 0] = 185;
-                pixelData[p + 1] = 185;
-                pixelData[p + 2] = 185;
-            } else if (result <= 90) {
-                pixelData[p + 0] = 175;
-                pixelData[p + 1] = 175;
-                pixelData[p + 2] = 175;
-            } else if (result <= 100) {
-                pixelData[p + 0] = 165;
-                pixelData[p + 1] = 165;
-                pixelData[p + 2] = 165;
-            } else if (result >= MAX_STEPS) {
+            /**
+             * With how many steps are required to escape, the less
+             * steps required have higher RGB values and vice versa
+             * NOTE: (MAX_STEPS - 1) is required as incrementation
+             * always adds 1 before returning
+             */
+            if (result < MAX_STEPS) {
+                pixelData[p + 0] = (MAX_STEPS - 1) - result;
+                pixelData[p + 1] = (MAX_STEPS - 1) - result;
+                pixelData[p + 2] = (MAX_STEPS - 1) - result;
+            } else {
                 pixelData[p + 0] = 0;
                 pixelData[p + 1] = 0;
                 pixelData[p + 2] = 0;
-            } else {
-                pixelData[p + 0] = result;
-                pixelData[p + 1] = result;
-                pixelData[p + 2] = result;
             }
+
+            // When RGB values set, jump array by 1 pixel size
             p = p + PIXEL_SIZE;
             col = col + 1;
         }
