@@ -45,4 +45,7 @@ add_executable(ZZEN9216
 #		Week4/stringsInC/sanitisingInputString.c)
 #		Week4/contains_gets.c)
 #		Week4/file.c)
-		Week4/hash_matcher.c Week4/hash_string.h)
+#		Week4/hash_matcher.c Week4/hash_string.h)
+
+		####### WEEK 5
+		Week5/which_endian.c Week5/littleToBig.c)
