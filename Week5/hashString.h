@@ -9,7 +9,7 @@
 // return the hash
 
 #define TMP_FILENAME "HASH_STRING_TMP.txt"
-#define MAX_ITERATIONS 10
+#define MAX_ATTEMPTS 500000
 
 #include <stdio.h>
 #include <string.h>

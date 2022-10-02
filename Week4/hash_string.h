@@ -13,7 +13,6 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <time.h>
 #include <openssl/evp.h>
 
 /* alphabet: [a-z0-9] */
