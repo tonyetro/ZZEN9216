@@ -10,6 +10,7 @@
 
 #define TMP_FILENAME "HASH_STRING_TMP.txt"
 #define MAX_ATTEMPTS 500000
+#define MAX_MATCHES 2
 
 #include <stdio.h>
 #include <string.h>
