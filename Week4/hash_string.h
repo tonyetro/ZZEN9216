@@ -9,11 +9,21 @@
 // return the hash
 
 #define TMP_FILENAME "HASH_STRING_TMP.txt"
-#define MAX_ATTEMPTS 200000
+#define MAX_ATTEMPTS 1000000
 
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 #include <openssl/evp.h>
+
+/* alphabet: [a-z0-9] */
+const char alphabet[] = "abcdefghijklmnopqrstuvwxyz0123456789";
+const char zID[] = "z5411839";
+
+// If not a cryptographically secure number, return interger [0, n]
+int intN(int n);
+// Input: length of the random string [a-z0-9] to be generated
+char *randomString(int len);
 
 char *hash_string(char *toHash, char *method) {
     unsigned char buffer[BUFSIZ];

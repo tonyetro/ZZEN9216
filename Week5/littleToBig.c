@@ -22,37 +22,17 @@
 #define MAX_INPUT_SIZE 256
 
 int main(int argc, char *argv[]) {
-
     // read from stdin and store the value as a string called "little"
     char *little = malloc(MAX_INPUT_SIZE);
+    char farLeft[5], midLeft[5], midRight[5], farRight[5];
+
     printf("Enter little-endian bytes: ");
     fgets(little, MAX_INPUT_SIZE, stdin);
 
-    // TODO:
-    // Your code goes here
-    // 0x00 0x00 0xf7 0x2c
-
-    int strLength = strlen(little) - 2;
-    char *result = {0};
-
-    // If input contains space (ASCII = 20), do calculations
-    int idx = strLength;
-
-    if (strchr(little, ' ')) {
-        while (0 != idx) {
-            if (little[idx] == ' ') {
-                printf("%d: ' '\n", idx);
-                idx = idx - 1;
-            }
-
-            printf("%d: 0x00 0x00 0xf7 0x2c\n", idx);
-            idx = idx - 1;
-        }
-    }
-
-    // replace this print statement with your own once you have converted the string.
-    printf("%s\n", little);
-    printf("%s\n", result);
+    // Pull values into variables, separated by spaces
+    sscanf(little, "%s %s %s %s", farLeft, midLeft, midRight, farRight);
+    // Print values in reverse order
+    printf("%s %s %s %s\n", farRight, midRight, midLeft, farLeft);
 
     free(little);
 
