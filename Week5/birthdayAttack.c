@@ -1,3 +1,10 @@
+/**
+ * Tony Caleum
+ * Hashes and compares my zID with a randomness concatenated
+ * Then hashes and compares 1~6 characters and the beginning of each
+ * 30 September 22, ZZEN9216
+ */
+
 #include "hashString.h"
 
 #define MAX_ATTEMPTS 9999999 // max unsigned int
@@ -44,9 +51,11 @@ void printLogic(char *newValue, char *targetValue, char *targetHash,
     // reset match counter until it maxes out
     if (strncmp(newHash, targetHash, *matchCounter) == 0) {
         if (*matchCounter == 1) {
-            printf("\nResult for %d matching character:\n", *matchCounter);
+            printf("\nResult for %d matching character:\n",
+                   *matchCounter);
         } else {
-            printf("\nResult for %d matching characters:\n", *matchCounter);
+            printf("\nResult for %d matching characters:\n",
+                   *matchCounter);
         }
 
         printf("Target Hash:\t%s | Value: %s\n"
