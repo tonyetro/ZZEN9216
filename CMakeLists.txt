@@ -50,4 +50,5 @@ add_executable(ZZEN9216
 ####### WEEK 5
 #		Week5/which_endian.c)
 #		Week5/littleToBig.c)
-		Week5/birthdayAttack.c Week5/hashString.h)
+ 		Week5/birthdayAttack.c Week5/hashString.h)
+#		Week5/birthdayAttackHt.c Week5/hashString.h)

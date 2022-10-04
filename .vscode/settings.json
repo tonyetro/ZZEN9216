@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "stdio.h": "c",
-        "mandelbrot.h": "c"
+        "mandelbrot.h": "c",
+        "hashstring.h": "c"
     }
 }
